@@ -1,7 +1,9 @@
 (defproject cljs-intro "1.0.0-SNAPSHOT"
   :description "FIXME: write description"
   :dependencies [[org.clojure/clojure "1.4.0"]
-								 [domina "1.0.0"]]
+								 [domina "1.0.0"]
+								 [org.clojure/java.jdbc "0.2.3"]
+								 [sqlitejdbc "0.5.6"]]
   :plugins [[lein-cljsbuild "0.2.3"]]
   :source-path "src/clj"
   :cljsbuild {
