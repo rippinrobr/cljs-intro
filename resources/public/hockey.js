@@ -20478,303 +20478,274 @@ hiccups.runtime.render_html = function render_html(x) {
 goog.provide("cljs_intro.views");
 goog.require("cljs.core");
 goog.require("hiccups.runtime");
-cljs_intro.views.create_player_demog = function create_player_demog(p__95592) {
-  var map__95605__95606 = p__95592;
-  var map__95605__95607 = cljs.core.seq_QMARK_.call(null, map__95605__95606) ? cljs.core.apply.call(null, cljs.core.hash_map, map__95605__95606) : map__95605__95606;
-  var pos__95608 = cljs.core._lookup.call(null, map__95605__95607, "\ufdd0'pos", null);
-  var lastname__95609 = cljs.core._lookup.call(null, map__95605__95607, "\ufdd0'lastname", null);
-  var firstname__95610 = cljs.core._lookup.call(null, map__95605__95607, "\ufdd0'firstname", null);
-  return[cljs.core.str("<div"), cljs.core.str(' class="demog"'), cljs.core.str(">"), cljs.core.str("<div"), cljs.core.str(' class="page-header tabs clearfix nm"'), cljs.core.str(">"), cljs.core.str(function() {
-    var attrs95611__95614 = [cljs.core.str(firstname__95610), cljs.core.str(" "), cljs.core.str(lastname__95609)].join("");
-    if(cljs.core.map_QMARK_.call(null, attrs95611__95614)) {
-      return[cljs.core.str("<h2"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95611__95614))), cljs.core.str(">"), cljs.core.str(function() {
-        var attrs95612__95615 = [cljs.core.str("&nbsp;&nbsp;("), cljs.core.str(pos__95608), cljs.core.str(")")].join("");
-        if(cljs.core.map_QMARK_.call(null, attrs95612__95615)) {
-          return[cljs.core.str("<span"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95612__95615))), cljs.core.str(">"), cljs.core.str("</span>")].join("")
-        }else {
-          return[cljs.core.str("<span>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95612__95615)), cljs.core.str("</span>")].join("")
-        }
-      }()), cljs.core.str("</h2>")].join("")
-    }else {
-      return[cljs.core.str("<h2>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95611__95614)), cljs.core.str(function() {
-        var attrs95613__95616 = [cljs.core.str("&nbsp;&nbsp;("), cljs.core.str(pos__95608), cljs.core.str(")")].join("");
-        if(cljs.core.map_QMARK_.call(null, attrs95613__95616)) {
-          return[cljs.core.str("<span"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95613__95616))), cljs.core.str(">"), cljs.core.str("</span>")].join("")
-        }else {
-          return[cljs.core.str("<span>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95613__95616)), cljs.core.str("</span>")].join("")
-        }
-      }()), cljs.core.str("</h2>")].join("")
-    }
-  }()), cljs.core.str("</div>"), cljs.core.str("</div>")].join("")
-};
-cljs_intro.views.create_shooting_stats = function create_shooting_stats(p__95617) {
-  var map__95681__95682 = p__95617;
-  var map__95681__95683 = cljs.core.seq_QMARK_.call(null, map__95681__95682) ? cljs.core.apply.call(null, cljs.core.hash_map, map__95681__95682) : map__95681__95682;
-  var postplusminus__95684 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postplusminus", null);
-  var gwg__95685 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'gwg", null);
-  var postpim__95686 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postpim", null);
-  var postpts__95687 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postpts", null);
-  var gtg__95688 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'gtg", null);
-  var postppa__95689 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postppa", null);
-  var plusminus__95690 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'plusminus", null);
-  var posta__95691 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'posta", null);
-  var sha__95692 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'sha", null);
-  var pim__95693 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'pim", null);
-  var postppg__95694 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postppg", null);
-  var postg__95695 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postg", null);
-  var postshg__95696 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postshg", null);
-  var postsha__95697 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postsha", null);
-  var ppa__95698 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'ppa", null);
-  var sog__95699 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'sog", null);
-  var a__95700 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'a", null);
-  var postgp__95701 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postgp", null);
-  var ppg__95702 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'ppg", null);
-  var year__95703 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'year", null);
-  var g__95704 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'g", null);
-  var shg__95705 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'shg", null);
-  var postsog__95706 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postsog", null);
-  var postgwg__95707 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'postgwg", null);
-  var pos__95708 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'pos", null);
-  var tmid__95709 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'tmid", null);
-  var gp__95710 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'gp", null);
-  var pts__95711 = cljs.core._lookup.call(null, map__95681__95683, "\ufdd0'pts", null);
+cljs_intro.views.create_shooting_stats = function create_shooting_stats(p__159770) {
+  var map__159834__159835 = p__159770;
+  var map__159834__159836 = cljs.core.seq_QMARK_.call(null, map__159834__159835) ? cljs.core.apply.call(null, cljs.core.hash_map, map__159834__159835) : map__159834__159835;
+  var postplusminus__159837 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postplusminus", null);
+  var gwg__159838 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'gwg", null);
+  var postpim__159839 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postpim", null);
+  var postpts__159840 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postpts", null);
+  var gtg__159841 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'gtg", null);
+  var postppa__159842 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postppa", null);
+  var plusminus__159843 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'plusminus", null);
+  var posta__159844 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'posta", null);
+  var sha__159845 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'sha", null);
+  var pim__159846 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'pim", null);
+  var postppg__159847 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postppg", null);
+  var postg__159848 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postg", null);
+  var postshg__159849 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postshg", null);
+  var postsha__159850 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postsha", null);
+  var ppa__159851 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'ppa", null);
+  var sog__159852 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'sog", null);
+  var a__159853 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'a", null);
+  var postgp__159854 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postgp", null);
+  var ppg__159855 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'ppg", null);
+  var year__159856 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'year", null);
+  var g__159857 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'g", null);
+  var shg__159858 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'shg", null);
+  var postsog__159859 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postsog", null);
+  var postgwg__159860 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'postgwg", null);
+  var pos__159861 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'pos", null);
+  var tmid__159862 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'tmid", null);
+  var gp__159863 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'gp", null);
+  var pts__159864 = cljs.core._lookup.call(null, map__159834__159836, "\ufdd0'pts", null);
   return[cljs.core.str("<tr"), cljs.core.str(""), cljs.core.str(">"), cljs.core.str(function() {
-    var attrs95712__95728 = year__95703;
-    if(cljs.core.map_QMARK_.call(null, attrs95712__95728)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95712__95728))), cljs.core.str(" />")].join("")
+    var attrs159865__159881 = year__159856;
+    if(cljs.core.map_QMARK_.call(null, attrs159865__159881)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159865__159881))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95712__95728)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159865__159881)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95713__95729 = tmid__95709;
-    if(cljs.core.map_QMARK_.call(null, attrs95713__95729)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95713__95729))), cljs.core.str(" />")].join("")
+    var attrs159866__159882 = tmid__159862;
+    if(cljs.core.map_QMARK_.call(null, attrs159866__159882)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159866__159882))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95713__95729)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159866__159882)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95714__95730 = pos__95708;
-    if(cljs.core.map_QMARK_.call(null, attrs95714__95730)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95714__95730))), cljs.core.str(" />")].join("")
+    var attrs159867__159883 = pos__159861;
+    if(cljs.core.map_QMARK_.call(null, attrs159867__159883)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159867__159883))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95714__95730)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159867__159883)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95715__95731 = gp__95710;
-    if(cljs.core.map_QMARK_.call(null, attrs95715__95731)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95715__95731))), cljs.core.str(" />")].join("")
+    var attrs159868__159884 = gp__159863;
+    if(cljs.core.map_QMARK_.call(null, attrs159868__159884)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159868__159884))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95715__95731)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159868__159884)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95716__95732 = g__95704;
-    if(cljs.core.map_QMARK_.call(null, attrs95716__95732)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95716__95732))), cljs.core.str(" />")].join("")
+    var attrs159869__159885 = g__159857;
+    if(cljs.core.map_QMARK_.call(null, attrs159869__159885)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159869__159885))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95716__95732)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159869__159885)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95717__95733 = a__95700;
-    if(cljs.core.map_QMARK_.call(null, attrs95717__95733)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95717__95733))), cljs.core.str(" />")].join("")
+    var attrs159870__159886 = a__159853;
+    if(cljs.core.map_QMARK_.call(null, attrs159870__159886)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159870__159886))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95717__95733)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159870__159886)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95718__95734 = pts__95711;
-    if(cljs.core.map_QMARK_.call(null, attrs95718__95734)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95718__95734))), cljs.core.str(" />")].join("")
+    var attrs159871__159887 = pts__159864;
+    if(cljs.core.map_QMARK_.call(null, attrs159871__159887)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159871__159887))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95718__95734)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159871__159887)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95719__95735 = pim__95693;
-    if(cljs.core.map_QMARK_.call(null, attrs95719__95735)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95719__95735))), cljs.core.str(" />")].join("")
+    var attrs159872__159888 = pim__159846;
+    if(cljs.core.map_QMARK_.call(null, attrs159872__159888)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159872__159888))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95719__95735)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159872__159888)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95720__95736 = plusminus__95690;
-    if(cljs.core.map_QMARK_.call(null, attrs95720__95736)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95720__95736))), cljs.core.str(" />")].join("")
+    var attrs159873__159889 = plusminus__159843;
+    if(cljs.core.map_QMARK_.call(null, attrs159873__159889)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159873__159889))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95720__95736)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159873__159889)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95721__95737 = ppg__95702;
-    if(cljs.core.map_QMARK_.call(null, attrs95721__95737)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95721__95737))), cljs.core.str(" />")].join("")
+    var attrs159874__159890 = ppg__159855;
+    if(cljs.core.map_QMARK_.call(null, attrs159874__159890)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159874__159890))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95721__95737)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159874__159890)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95722__95738 = ppa__95698;
-    if(cljs.core.map_QMARK_.call(null, attrs95722__95738)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95722__95738))), cljs.core.str(" />")].join("")
+    var attrs159875__159891 = ppa__159851;
+    if(cljs.core.map_QMARK_.call(null, attrs159875__159891)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159875__159891))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95722__95738)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159875__159891)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95723__95739 = shg__95705;
-    if(cljs.core.map_QMARK_.call(null, attrs95723__95739)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95723__95739))), cljs.core.str(" />")].join("")
+    var attrs159876__159892 = shg__159858;
+    if(cljs.core.map_QMARK_.call(null, attrs159876__159892)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159876__159892))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95723__95739)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159876__159892)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95724__95740 = sha__95692;
-    if(cljs.core.map_QMARK_.call(null, attrs95724__95740)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95724__95740))), cljs.core.str(" />")].join("")
+    var attrs159877__159893 = sha__159845;
+    if(cljs.core.map_QMARK_.call(null, attrs159877__159893)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159877__159893))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95724__95740)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159877__159893)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95725__95741 = gwg__95685;
-    if(cljs.core.map_QMARK_.call(null, attrs95725__95741)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95725__95741))), cljs.core.str(" />")].join("")
+    var attrs159878__159894 = gwg__159838;
+    if(cljs.core.map_QMARK_.call(null, attrs159878__159894)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159878__159894))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95725__95741)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159878__159894)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95726__95742 = gtg__95688;
-    if(cljs.core.map_QMARK_.call(null, attrs95726__95742)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95726__95742))), cljs.core.str(" />")].join("")
+    var attrs159879__159895 = gtg__159841;
+    if(cljs.core.map_QMARK_.call(null, attrs159879__159895)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159879__159895))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95726__95742)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159879__159895)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95727__95743 = sog__95699;
-    if(cljs.core.map_QMARK_.call(null, attrs95727__95743)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95727__95743))), cljs.core.str(" />")].join("")
+    var attrs159880__159896 = sog__159852;
+    if(cljs.core.map_QMARK_.call(null, attrs159880__159896)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159880__159896))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95727__95743)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159880__159896)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str("</tr>")].join("")
 };
-cljs_intro.views.create_playoff_shooting_stats = function create_playoff_shooting_stats(p__95744) {
-  var map__95796__95797 = p__95744;
-  var map__95796__95798 = cljs.core.seq_QMARK_.call(null, map__95796__95797) ? cljs.core.apply.call(null, cljs.core.hash_map, map__95796__95797) : map__95796__95797;
-  var postplusminus__95799 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postplusminus", null);
-  var postpim__95800 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postpim", null);
-  var postpts__95801 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postpts", null);
-  var postppa__95802 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postppa", null);
-  var posta__95803 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'posta", null);
-  var postgtg__95804 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postgtg", null);
-  var postppg__95805 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postppg", null);
-  var postg__95806 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postg", null);
-  var postshg__95807 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postshg", null);
-  var postsha__95808 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postsha", null);
-  var postgp__95809 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postgp", null);
-  var year__95810 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'year", null);
-  var postsog__95811 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postsog", null);
-  var postgwg__95812 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'postgwg", null);
-  var pos__95813 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'pos", null);
-  var tmid__95814 = cljs.core._lookup.call(null, map__95796__95798, "\ufdd0'tmid", null);
+cljs_intro.views.create_playoff_shooting_stats = function create_playoff_shooting_stats(p__159897) {
+  var map__159949__159950 = p__159897;
+  var map__159949__159951 = cljs.core.seq_QMARK_.call(null, map__159949__159950) ? cljs.core.apply.call(null, cljs.core.hash_map, map__159949__159950) : map__159949__159950;
+  var postplusminus__159952 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postplusminus", null);
+  var postpim__159953 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postpim", null);
+  var postpts__159954 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postpts", null);
+  var postppa__159955 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postppa", null);
+  var posta__159956 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'posta", null);
+  var postgtg__159957 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postgtg", null);
+  var postppg__159958 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postppg", null);
+  var postg__159959 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postg", null);
+  var postshg__159960 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postshg", null);
+  var postsha__159961 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postsha", null);
+  var postgp__159962 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postgp", null);
+  var year__159963 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'year", null);
+  var postsog__159964 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postsog", null);
+  var postgwg__159965 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'postgwg", null);
+  var pos__159966 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'pos", null);
+  var tmid__159967 = cljs.core._lookup.call(null, map__159949__159951, "\ufdd0'tmid", null);
   return[cljs.core.str("<tr"), cljs.core.str(""), cljs.core.str(">"), cljs.core.str(function() {
-    var attrs95815__95832 = year__95810;
-    if(cljs.core.map_QMARK_.call(null, attrs95815__95832)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95815__95832))), cljs.core.str(" />")].join("")
+    var attrs159968__159985 = year__159963;
+    if(cljs.core.map_QMARK_.call(null, attrs159968__159985)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159968__159985))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95815__95832)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159968__159985)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95816__95833 = tmid__95814;
-    if(cljs.core.map_QMARK_.call(null, attrs95816__95833)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95816__95833))), cljs.core.str(" />")].join("")
+    var attrs159969__159986 = tmid__159967;
+    if(cljs.core.map_QMARK_.call(null, attrs159969__159986)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159969__159986))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95816__95833)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159969__159986)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95817__95834 = pos__95813;
-    if(cljs.core.map_QMARK_.call(null, attrs95817__95834)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95817__95834))), cljs.core.str(" />")].join("")
+    var attrs159970__159987 = pos__159966;
+    if(cljs.core.map_QMARK_.call(null, attrs159970__159987)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159970__159987))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95817__95834)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159970__159987)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95818__95835 = postgp__95809;
-    if(cljs.core.map_QMARK_.call(null, attrs95818__95835)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95818__95835))), cljs.core.str(" />")].join("")
+    var attrs159971__159988 = postgp__159962;
+    if(cljs.core.map_QMARK_.call(null, attrs159971__159988)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159971__159988))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95818__95835)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159971__159988)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95819__95836 = postg__95806;
-    if(cljs.core.map_QMARK_.call(null, attrs95819__95836)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95819__95836))), cljs.core.str(" />")].join("")
+    var attrs159972__159989 = postg__159959;
+    if(cljs.core.map_QMARK_.call(null, attrs159972__159989)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159972__159989))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95819__95836)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159972__159989)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95820__95837 = posta__95803;
-    if(cljs.core.map_QMARK_.call(null, attrs95820__95837)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95820__95837))), cljs.core.str(" />")].join("")
+    var attrs159973__159990 = posta__159956;
+    if(cljs.core.map_QMARK_.call(null, attrs159973__159990)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159973__159990))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95820__95837)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159973__159990)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95821__95838 = postpts__95801;
-    if(cljs.core.map_QMARK_.call(null, attrs95821__95838)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95821__95838))), cljs.core.str(" />")].join("")
+    var attrs159974__159991 = postpts__159954;
+    if(cljs.core.map_QMARK_.call(null, attrs159974__159991)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159974__159991))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95821__95838)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159974__159991)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95822__95839 = postpim__95800;
-    if(cljs.core.map_QMARK_.call(null, attrs95822__95839)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95822__95839))), cljs.core.str(" />")].join("")
+    var attrs159975__159992 = postpim__159953;
+    if(cljs.core.map_QMARK_.call(null, attrs159975__159992)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159975__159992))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95822__95839)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159975__159992)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95823__95840 = postplusminus__95799;
-    if(cljs.core.map_QMARK_.call(null, attrs95823__95840)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95823__95840))), cljs.core.str(" />")].join("")
+    var attrs159976__159993 = postplusminus__159952;
+    if(cljs.core.map_QMARK_.call(null, attrs159976__159993)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159976__159993))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95823__95840)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159976__159993)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95824__95841 = postppg__95805;
-    if(cljs.core.map_QMARK_.call(null, attrs95824__95841)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95824__95841))), cljs.core.str(" />")].join("")
+    var attrs159977__159994 = postppg__159958;
+    if(cljs.core.map_QMARK_.call(null, attrs159977__159994)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159977__159994))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95824__95841)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159977__159994)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95825__95842 = postppa__95802;
-    if(cljs.core.map_QMARK_.call(null, attrs95825__95842)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95825__95842))), cljs.core.str(" />")].join("")
+    var attrs159978__159995 = postppa__159955;
+    if(cljs.core.map_QMARK_.call(null, attrs159978__159995)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159978__159995))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95825__95842)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159978__159995)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95826__95843 = postshg__95807;
-    if(cljs.core.map_QMARK_.call(null, attrs95826__95843)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95826__95843))), cljs.core.str(" />")].join("")
+    var attrs159979__159996 = postshg__159960;
+    if(cljs.core.map_QMARK_.call(null, attrs159979__159996)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159979__159996))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95826__95843)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159979__159996)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95827__95844 = postsha__95808;
-    if(cljs.core.map_QMARK_.call(null, attrs95827__95844)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95827__95844))), cljs.core.str(" />")].join("")
+    var attrs159980__159997 = postsha__159961;
+    if(cljs.core.map_QMARK_.call(null, attrs159980__159997)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159980__159997))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95827__95844)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159980__159997)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95828__95845 = postgwg__95812;
-    if(cljs.core.map_QMARK_.call(null, attrs95828__95845)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95828__95845))), cljs.core.str(" />")].join("")
+    var attrs159981__159998 = postgwg__159965;
+    if(cljs.core.map_QMARK_.call(null, attrs159981__159998)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159981__159998))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95828__95845)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159981__159998)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str("<td />"), cljs.core.str(function() {
-    var attrs95831__95846 = postsog__95811;
-    if(cljs.core.map_QMARK_.call(null, attrs95831__95846)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95831__95846))), cljs.core.str(" />")].join("")
+    var attrs159984__159999 = postsog__159964;
+    if(cljs.core.map_QMARK_.call(null, attrs159984__159999)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs159984__159999))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95831__95846)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs159984__159999)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str("</tr>")].join("")
 };
@@ -20783,219 +20754,219 @@ cljs_intro.views.shooting_stats_table_header = function shooting_stats_table_hea
 };
 cljs_intro.views.show_shooting_season_stats = function show_shooting_season_stats(stats) {
   return[cljs.core.str("<h3>Regular Season</h3>"), cljs.core.str("<table"), cljs.core.str(' class="table"'), cljs.core.str(">"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.shooting_stats_table_header.call(null))), cljs.core.str(function() {
-    var attrs95857__95858 = cljs.core.map.call(null, cljs_intro.views.create_shooting_stats, stats);
-    if(cljs.core.map_QMARK_.call(null, attrs95857__95858)) {
-      return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95857__95858))), cljs.core.str(" />")].join("")
+    var attrs160010__160011 = cljs.core.map.call(null, cljs_intro.views.create_shooting_stats, stats);
+    if(cljs.core.map_QMARK_.call(null, attrs160010__160011)) {
+      return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160010__160011))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95857__95858)), cljs.core.str("</tbody>")].join("")
+      return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160010__160011)), cljs.core.str("</tbody>")].join("")
     }
   }()), cljs.core.str("</table>")].join("")
 };
 cljs_intro.views.show_shooting_playoff_stats = function show_shooting_playoff_stats(stats) {
   return[cljs.core.str("<h3>Post Season</h3>"), cljs.core.str("<table"), cljs.core.str(' class="table"'), cljs.core.str(">"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.shooting_stats_table_header.call(null))), cljs.core.str(function() {
-    var attrs95865__95866 = cljs.core.map.call(null, cljs_intro.views.create_playoff_shooting_stats, stats);
-    if(cljs.core.map_QMARK_.call(null, attrs95865__95866)) {
-      return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95865__95866))), cljs.core.str(" />")].join("")
+    var attrs160018__160019 = cljs.core.map.call(null, cljs_intro.views.create_playoff_shooting_stats, stats);
+    if(cljs.core.map_QMARK_.call(null, attrs160018__160019)) {
+      return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160018__160019))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95865__95866)), cljs.core.str("</tbody>")].join("")
+      return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160018__160019)), cljs.core.str("</tbody>")].join("")
     }
   }()), cljs.core.str("</table>")].join("")
 };
 cljs_intro.views.show_shooting_stats = function show_shooting_stats(stats) {
   return[cljs.core.str("<div"), cljs.core.str(' class="scoring"'), cljs.core.str(">"), cljs.core.str("<h2>Scoring</h2>"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.show_shooting_season_stats.call(null, stats))), cljs.core.str("<br />"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.show_shooting_playoff_stats.call(null, stats))), cljs.core.str("</div>")].join("")
 };
-cljs_intro.views.create_goalie_stats = function create_goalie_stats(p__95875) {
-  var map__95921__95922 = p__95875;
-  var map__95921__95923 = cljs.core.seq_QMARK_.call(null, map__95921__95922) ? cljs.core.apply.call(null, cljs.core.hash_map, map__95921__95922) : map__95921__95922;
-  var postl__95924 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postl", null);
-  var w__95925 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'w", null);
-  var sa__95926 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'sa", null);
-  var postsho__95927 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postsho", null);
-  var postga__95928 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postga", null);
-  var eng__95929 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'eng", null);
-  var postgp__95930 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postgp", null);
-  var year__95931 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'year", null);
-  var ga__95932 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'ga", null);
-  var posteng__95933 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'posteng", null);
-  var postmin__95934 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postmin", null);
-  var l__95935 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'l", null);
-  var postw__95936 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postw", null);
-  var postsa__95937 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postsa", null);
-  var tmid__95938 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'tmid", null);
-  var postt__95939 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'postt", null);
-  var gp__95940 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'gp", null);
-  var tol__95941 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'tol", null);
-  var sho__95942 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'sho", null);
-  var min__95943 = cljs.core._lookup.call(null, map__95921__95923, "\ufdd0'min", null);
+cljs_intro.views.create_goalie_stats = function create_goalie_stats(p__160028) {
+  var map__160074__160075 = p__160028;
+  var map__160074__160076 = cljs.core.seq_QMARK_.call(null, map__160074__160075) ? cljs.core.apply.call(null, cljs.core.hash_map, map__160074__160075) : map__160074__160075;
+  var postl__160077 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postl", null);
+  var w__160078 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'w", null);
+  var sa__160079 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'sa", null);
+  var postsho__160080 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postsho", null);
+  var postga__160081 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postga", null);
+  var eng__160082 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'eng", null);
+  var postgp__160083 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postgp", null);
+  var year__160084 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'year", null);
+  var ga__160085 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'ga", null);
+  var posteng__160086 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'posteng", null);
+  var postmin__160087 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postmin", null);
+  var l__160088 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'l", null);
+  var postw__160089 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postw", null);
+  var postsa__160090 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postsa", null);
+  var tmid__160091 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'tmid", null);
+  var postt__160092 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'postt", null);
+  var gp__160093 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'gp", null);
+  var tol__160094 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'tol", null);
+  var sho__160095 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'sho", null);
+  var min__160096 = cljs.core._lookup.call(null, map__160074__160076, "\ufdd0'min", null);
   return[cljs.core.str("<tr"), cljs.core.str(""), cljs.core.str(">"), cljs.core.str(function() {
-    var attrs95944__95955 = year__95931;
-    if(cljs.core.map_QMARK_.call(null, attrs95944__95955)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95944__95955))), cljs.core.str(" />")].join("")
+    var attrs160097__160108 = year__160084;
+    if(cljs.core.map_QMARK_.call(null, attrs160097__160108)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160097__160108))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95944__95955)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160097__160108)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95945__95956 = tmid__95938;
-    if(cljs.core.map_QMARK_.call(null, attrs95945__95956)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95945__95956))), cljs.core.str(" />")].join("")
+    var attrs160098__160109 = tmid__160091;
+    if(cljs.core.map_QMARK_.call(null, attrs160098__160109)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160098__160109))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95945__95956)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160098__160109)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95946__95957 = gp__95940;
-    if(cljs.core.map_QMARK_.call(null, attrs95946__95957)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95946__95957))), cljs.core.str(" />")].join("")
+    var attrs160099__160110 = gp__160093;
+    if(cljs.core.map_QMARK_.call(null, attrs160099__160110)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160099__160110))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95946__95957)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160099__160110)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95947__95958 = min__95943;
-    if(cljs.core.map_QMARK_.call(null, attrs95947__95958)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95947__95958))), cljs.core.str(" />")].join("")
+    var attrs160100__160111 = min__160096;
+    if(cljs.core.map_QMARK_.call(null, attrs160100__160111)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160100__160111))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95947__95958)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160100__160111)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95948__95959 = w__95925;
-    if(cljs.core.map_QMARK_.call(null, attrs95948__95959)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95948__95959))), cljs.core.str(" />")].join("")
+    var attrs160101__160112 = w__160078;
+    if(cljs.core.map_QMARK_.call(null, attrs160101__160112)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160101__160112))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95948__95959)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160101__160112)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95949__95960 = l__95935;
-    if(cljs.core.map_QMARK_.call(null, attrs95949__95960)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95949__95960))), cljs.core.str(" />")].join("")
+    var attrs160102__160113 = l__160088;
+    if(cljs.core.map_QMARK_.call(null, attrs160102__160113)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160102__160113))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95949__95960)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160102__160113)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95950__95961 = tol__95941;
-    if(cljs.core.map_QMARK_.call(null, attrs95950__95961)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95950__95961))), cljs.core.str(" />")].join("")
+    var attrs160103__160114 = tol__160094;
+    if(cljs.core.map_QMARK_.call(null, attrs160103__160114)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160103__160114))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95950__95961)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160103__160114)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95951__95962 = eng__95929;
-    if(cljs.core.map_QMARK_.call(null, attrs95951__95962)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95951__95962))), cljs.core.str(" />")].join("")
+    var attrs160104__160115 = eng__160082;
+    if(cljs.core.map_QMARK_.call(null, attrs160104__160115)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160104__160115))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95951__95962)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160104__160115)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95952__95963 = sho__95942;
-    if(cljs.core.map_QMARK_.call(null, attrs95952__95963)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95952__95963))), cljs.core.str(" />")].join("")
+    var attrs160105__160116 = sho__160095;
+    if(cljs.core.map_QMARK_.call(null, attrs160105__160116)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160105__160116))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95952__95963)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160105__160116)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95953__95964 = ga__95932;
-    if(cljs.core.map_QMARK_.call(null, attrs95953__95964)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95953__95964))), cljs.core.str(" />")].join("")
+    var attrs160106__160117 = ga__160085;
+    if(cljs.core.map_QMARK_.call(null, attrs160106__160117)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160106__160117))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95953__95964)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160106__160117)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs95954__95965 = sa__95926;
-    if(cljs.core.map_QMARK_.call(null, attrs95954__95965)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs95954__95965))), cljs.core.str(" />")].join("")
+    var attrs160107__160118 = sa__160079;
+    if(cljs.core.map_QMARK_.call(null, attrs160107__160118)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160107__160118))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs95954__95965)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160107__160118)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str("</tr>")].join("")
 };
-cljs_intro.views.create_goalie_playoff_stats = function create_goalie_playoff_stats(p__95966) {
-  var map__96003__96004 = p__95966;
-  var map__96003__96005 = cljs.core.seq_QMARK_.call(null, map__96003__96004) ? cljs.core.apply.call(null, cljs.core.hash_map, map__96003__96004) : map__96003__96004;
-  var postl__96006 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postl", null);
-  var postsho__96007 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postsho", null);
-  var postga__96008 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postga", null);
-  var postgp__96009 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postgp", null);
-  var year__96010 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'year", null);
-  var posteng__96011 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'posteng", null);
-  var postmin__96012 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postmin", null);
-  var postw__96013 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postw", null);
-  var postsa__96014 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postsa", null);
-  var tmid__96015 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'tmid", null);
-  var postt__96016 = cljs.core._lookup.call(null, map__96003__96005, "\ufdd0'postt", null);
+cljs_intro.views.create_goalie_playoff_stats = function create_goalie_playoff_stats(p__160119) {
+  var map__160156__160157 = p__160119;
+  var map__160156__160158 = cljs.core.seq_QMARK_.call(null, map__160156__160157) ? cljs.core.apply.call(null, cljs.core.hash_map, map__160156__160157) : map__160156__160157;
+  var postl__160159 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postl", null);
+  var postsho__160160 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postsho", null);
+  var postga__160161 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postga", null);
+  var postgp__160162 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postgp", null);
+  var year__160163 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'year", null);
+  var posteng__160164 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'posteng", null);
+  var postmin__160165 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postmin", null);
+  var postw__160166 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postw", null);
+  var postsa__160167 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postsa", null);
+  var tmid__160168 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'tmid", null);
+  var postt__160169 = cljs.core._lookup.call(null, map__160156__160158, "\ufdd0'postt", null);
   return[cljs.core.str("<tr"), cljs.core.str(""), cljs.core.str(">"), cljs.core.str(function() {
-    var attrs96017__96028 = year__96010;
-    if(cljs.core.map_QMARK_.call(null, attrs96017__96028)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96017__96028))), cljs.core.str(" />")].join("")
+    var attrs160170__160181 = year__160163;
+    if(cljs.core.map_QMARK_.call(null, attrs160170__160181)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160170__160181))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96017__96028)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160170__160181)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96018__96029 = tmid__96015;
-    if(cljs.core.map_QMARK_.call(null, attrs96018__96029)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96018__96029))), cljs.core.str(" />")].join("")
+    var attrs160171__160182 = tmid__160168;
+    if(cljs.core.map_QMARK_.call(null, attrs160171__160182)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160171__160182))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96018__96029)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160171__160182)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96019__96030 = postgp__96009;
-    if(cljs.core.map_QMARK_.call(null, attrs96019__96030)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96019__96030))), cljs.core.str(" />")].join("")
+    var attrs160172__160183 = postgp__160162;
+    if(cljs.core.map_QMARK_.call(null, attrs160172__160183)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160172__160183))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96019__96030)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160172__160183)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96020__96031 = postmin__96012;
-    if(cljs.core.map_QMARK_.call(null, attrs96020__96031)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96020__96031))), cljs.core.str(" />")].join("")
+    var attrs160173__160184 = postmin__160165;
+    if(cljs.core.map_QMARK_.call(null, attrs160173__160184)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160173__160184))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96020__96031)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160173__160184)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96021__96032 = postw__96013;
-    if(cljs.core.map_QMARK_.call(null, attrs96021__96032)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96021__96032))), cljs.core.str(" />")].join("")
+    var attrs160174__160185 = postw__160166;
+    if(cljs.core.map_QMARK_.call(null, attrs160174__160185)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160174__160185))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96021__96032)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160174__160185)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96022__96033 = postl__96006;
-    if(cljs.core.map_QMARK_.call(null, attrs96022__96033)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96022__96033))), cljs.core.str(" />")].join("")
+    var attrs160175__160186 = postl__160159;
+    if(cljs.core.map_QMARK_.call(null, attrs160175__160186)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160175__160186))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96022__96033)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160175__160186)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96023__96034 = postt__96016;
-    if(cljs.core.map_QMARK_.call(null, attrs96023__96034)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96023__96034))), cljs.core.str(" />")].join("")
+    var attrs160176__160187 = postt__160169;
+    if(cljs.core.map_QMARK_.call(null, attrs160176__160187)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160176__160187))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96023__96034)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160176__160187)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96024__96035 = posteng__96011;
-    if(cljs.core.map_QMARK_.call(null, attrs96024__96035)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96024__96035))), cljs.core.str(" />")].join("")
+    var attrs160177__160188 = posteng__160164;
+    if(cljs.core.map_QMARK_.call(null, attrs160177__160188)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160177__160188))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96024__96035)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160177__160188)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96025__96036 = postsho__96007;
-    if(cljs.core.map_QMARK_.call(null, attrs96025__96036)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96025__96036))), cljs.core.str(" />")].join("")
+    var attrs160178__160189 = postsho__160160;
+    if(cljs.core.map_QMARK_.call(null, attrs160178__160189)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160178__160189))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96025__96036)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160178__160189)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96026__96037 = postga__96008;
-    if(cljs.core.map_QMARK_.call(null, attrs96026__96037)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96026__96037))), cljs.core.str(" />")].join("")
+    var attrs160179__160190 = postga__160161;
+    if(cljs.core.map_QMARK_.call(null, attrs160179__160190)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160179__160190))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96026__96037)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160179__160190)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str(function() {
-    var attrs96027__96038 = postsa__96014;
-    if(cljs.core.map_QMARK_.call(null, attrs96027__96038)) {
-      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96027__96038))), cljs.core.str(" />")].join("")
+    var attrs160180__160191 = postsa__160167;
+    if(cljs.core.map_QMARK_.call(null, attrs160180__160191)) {
+      return[cljs.core.str("<td"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160180__160191))), cljs.core.str(" />")].join("")
     }else {
-      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96027__96038)), cljs.core.str("</td>")].join("")
+      return[cljs.core.str("<td>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160180__160191)), cljs.core.str("</td>")].join("")
     }
   }()), cljs.core.str("</tr>")].join("")
 };
@@ -21004,23 +20975,23 @@ cljs_intro.views.goalie_stats_table_header = function goalie_stats_table_header(
 };
 cljs_intro.views.show_goalie_regular_season_stats = function show_goalie_regular_season_stats(goalies) {
   return[cljs.core.str("<h3>Regular Season</h3>"), cljs.core.str(function() {
-    var attrs96053__96056 = cljs_intro.views.goalie_stats_table_header.call(null);
-    if(cljs.core.map_QMARK_.call(null, attrs96053__96056)) {
-      return[cljs.core.str("<table"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":"table"}), attrs96053__96056))), cljs.core.str(">"), cljs.core.str(function() {
-        var attrs96054__96057 = cljs.core.map.call(null, cljs_intro.views.create_goalie_stats, goalies);
-        if(cljs.core.map_QMARK_.call(null, attrs96054__96057)) {
-          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96054__96057))), cljs.core.str(" />")].join("")
+    var attrs160206__160209 = cljs_intro.views.goalie_stats_table_header.call(null);
+    if(cljs.core.map_QMARK_.call(null, attrs160206__160209)) {
+      return[cljs.core.str("<table"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":"table"}), attrs160206__160209))), cljs.core.str(">"), cljs.core.str(function() {
+        var attrs160207__160210 = cljs.core.map.call(null, cljs_intro.views.create_goalie_stats, goalies);
+        if(cljs.core.map_QMARK_.call(null, attrs160207__160210)) {
+          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160207__160210))), cljs.core.str(" />")].join("")
         }else {
-          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96054__96057)), cljs.core.str("</tbody>")].join("")
+          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160207__160210)), cljs.core.str("</tbody>")].join("")
         }
       }()), cljs.core.str("</table>")].join("")
     }else {
-      return[cljs.core.str('<table class="table">'), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96053__96056)), cljs.core.str(function() {
-        var attrs96055__96058 = cljs.core.map.call(null, cljs_intro.views.create_goalie_stats, goalies);
-        if(cljs.core.map_QMARK_.call(null, attrs96055__96058)) {
-          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96055__96058))), cljs.core.str(" />")].join("")
+      return[cljs.core.str('<table class="table">'), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160206__160209)), cljs.core.str(function() {
+        var attrs160208__160211 = cljs.core.map.call(null, cljs_intro.views.create_goalie_stats, goalies);
+        if(cljs.core.map_QMARK_.call(null, attrs160208__160211)) {
+          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160208__160211))), cljs.core.str(" />")].join("")
         }else {
-          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96055__96058)), cljs.core.str("</tbody>")].join("")
+          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160208__160211)), cljs.core.str("</tbody>")].join("")
         }
       }()), cljs.core.str("</table>")].join("")
     }
@@ -21028,23 +20999,23 @@ cljs_intro.views.show_goalie_regular_season_stats = function show_goalie_regular
 };
 cljs_intro.views.show_goalie_playoff_stats = function show_goalie_playoff_stats(goalies) {
   return[cljs.core.str("<h3>Post Season</h3>"), cljs.core.str(function() {
-    var attrs96069__96072 = cljs_intro.views.goalie_stats_table_header.call(null);
-    if(cljs.core.map_QMARK_.call(null, attrs96069__96072)) {
-      return[cljs.core.str("<table"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":"table"}), attrs96069__96072))), cljs.core.str(">"), cljs.core.str(function() {
-        var attrs96070__96073 = cljs.core.map.call(null, cljs_intro.views.create_goalie_playoff_stats, goalies);
-        if(cljs.core.map_QMARK_.call(null, attrs96070__96073)) {
-          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96070__96073))), cljs.core.str(" />")].join("")
+    var attrs160222__160225 = cljs_intro.views.goalie_stats_table_header.call(null);
+    if(cljs.core.map_QMARK_.call(null, attrs160222__160225)) {
+      return[cljs.core.str("<table"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":"table"}), attrs160222__160225))), cljs.core.str(">"), cljs.core.str(function() {
+        var attrs160223__160226 = cljs.core.map.call(null, cljs_intro.views.create_goalie_playoff_stats, goalies);
+        if(cljs.core.map_QMARK_.call(null, attrs160223__160226)) {
+          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160223__160226))), cljs.core.str(" />")].join("")
         }else {
-          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96070__96073)), cljs.core.str("</tbody>")].join("")
+          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160223__160226)), cljs.core.str("</tbody>")].join("")
         }
       }()), cljs.core.str("</table>")].join("")
     }else {
-      return[cljs.core.str('<table class="table">'), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96069__96072)), cljs.core.str(function() {
-        var attrs96071__96074 = cljs.core.map.call(null, cljs_intro.views.create_goalie_playoff_stats, goalies);
-        if(cljs.core.map_QMARK_.call(null, attrs96071__96074)) {
-          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs96071__96074))), cljs.core.str(" />")].join("")
+      return[cljs.core.str('<table class="table">'), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160222__160225)), cljs.core.str(function() {
+        var attrs160224__160227 = cljs.core.map.call(null, cljs_intro.views.create_goalie_playoff_stats, goalies);
+        if(cljs.core.map_QMARK_.call(null, attrs160224__160227)) {
+          return[cljs.core.str("<tbody"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160224__160227))), cljs.core.str(" />")].join("")
         }else {
-          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96071__96074)), cljs.core.str("</tbody>")].join("")
+          return[cljs.core.str("<tbody>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160224__160227)), cljs.core.str("</tbody>")].join("")
         }
       }()), cljs.core.str("</table>")].join("")
     }
@@ -21052,18 +21023,47 @@ cljs_intro.views.show_goalie_playoff_stats = function show_goalie_playoff_stats(
 };
 cljs_intro.views.show_goalie_stats = function show_goalie_stats(goalies) {
   return[cljs.core.str(function() {
-    var attrs96081__96086 = cljs_intro.views.show_goalie_regular_season_stats.call(null, goalies);
-    if(cljs.core.map_QMARK_.call(null, attrs96081__96086)) {
-      return[cljs.core.str("<div"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":"goalies"}), attrs96081__96086))), cljs.core.str(">"), cljs.core.str("<br />"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.show_goalie_playoff_stats.call(null, goalies))), cljs.core.str("</div>")].join("")
+    var attrs160234__160239 = cljs_intro.views.show_goalie_regular_season_stats.call(null, goalies);
+    if(cljs.core.map_QMARK_.call(null, attrs160234__160239)) {
+      return[cljs.core.str("<div"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":"goalies"}), attrs160234__160239))), cljs.core.str(">"), cljs.core.str("<br />"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.show_goalie_playoff_stats.call(null, goalies))), cljs.core.str("</div>")].join("")
     }else {
-      return[cljs.core.str('<div class="goalies">'), cljs.core.str(hiccups.runtime.render_html.call(null, attrs96081__96086)), cljs.core.str("<br />"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.show_goalie_playoff_stats.call(null, goalies))), cljs.core.str("</div>")].join("")
+      return[cljs.core.str('<div class="goalies">'), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160234__160239)), cljs.core.str("<br />"), cljs.core.str(hiccups.runtime.render_html.call(null, cljs_intro.views.show_goalie_playoff_stats.call(null, goalies))), cljs.core.str("</div>")].join("")
     }
   }())].join("")
 };
+cljs_intro.views.show_player_demog = function show_player_demog(p__160240) {
+  var map__160253__160254 = p__160240;
+  var map__160253__160255 = cljs.core.seq_QMARK_.call(null, map__160253__160254) ? cljs.core.apply.call(null, cljs.core.hash_map, map__160253__160254) : map__160253__160254;
+  var pos__160256 = cljs.core._lookup.call(null, map__160253__160255, "\ufdd0'pos", null);
+  var lastname__160257 = cljs.core._lookup.call(null, map__160253__160255, "\ufdd0'lastname", null);
+  var firstname__160258 = cljs.core._lookup.call(null, map__160253__160255, "\ufdd0'firstname", null);
+  return[cljs.core.str("<div"), cljs.core.str(' class="demog"'), cljs.core.str(">"), cljs.core.str("<div"), cljs.core.str(' class="page-header tabs clearfix nm"'), cljs.core.str(">"), cljs.core.str(function() {
+    var attrs160259__160262 = [cljs.core.str(firstname__160258), cljs.core.str(" "), cljs.core.str(lastname__160257)].join("");
+    if(cljs.core.map_QMARK_.call(null, attrs160259__160262)) {
+      return[cljs.core.str("<h2"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160259__160262))), cljs.core.str(">"), cljs.core.str(function() {
+        var attrs160260__160263 = [cljs.core.str("&nbsp;&nbsp;("), cljs.core.str(pos__160256), cljs.core.str(")")].join("");
+        if(cljs.core.map_QMARK_.call(null, attrs160260__160263)) {
+          return[cljs.core.str("<span"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160260__160263))), cljs.core.str(">"), cljs.core.str("</span>")].join("")
+        }else {
+          return[cljs.core.str("<span>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160260__160263)), cljs.core.str("</span>")].join("")
+        }
+      }()), cljs.core.str("</h2>")].join("")
+    }else {
+      return[cljs.core.str("<h2>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160259__160262)), cljs.core.str(function() {
+        var attrs160261__160264 = [cljs.core.str("&nbsp;&nbsp;("), cljs.core.str(pos__160256), cljs.core.str(")")].join("");
+        if(cljs.core.map_QMARK_.call(null, attrs160261__160264)) {
+          return[cljs.core.str("<span"), cljs.core.str(hiccups.runtime.render_attr_map.call(null, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'id", "\ufdd0'class"], {"\ufdd0'id":null, "\ufdd0'class":null}), attrs160261__160264))), cljs.core.str(">"), cljs.core.str("</span>")].join("")
+        }else {
+          return[cljs.core.str("<span>"), cljs.core.str(hiccups.runtime.render_html.call(null, attrs160261__160264)), cljs.core.str("</span>")].join("")
+        }
+      }()), cljs.core.str("</h2>")].join("")
+    }
+  }()), cljs.core.str("</div>"), cljs.core.str("</div>")].join("")
+};
 cljs_intro.views.show_stats = function show_stats(data) {
   return[cljs.core.str(hiccups.runtime.render_html.call(null, function() {
-    var demog__96088 = (new cljs.core.Keyword("\ufdd0'demog")).call(null, data);
-    return[cljs.core.str(cljs_intro.views.create_player_demog.call(null, demog__96088)), cljs.core.str(cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0'pos")).call(null, demog__96088), "G") ? [cljs.core.str(cljs_intro.views.show_goalie_stats.call(null, (new cljs.core.Keyword("\ufdd0'goalie")).call(null, data))), cljs.core.str(cljs_intro.views.show_shooting_stats.call(null, (new cljs.core.Keyword("\ufdd0'scoring")).call(null, data)))].join("") : cljs_intro.views.show_shooting_stats.call(null, 
+    var demog__160266 = (new cljs.core.Keyword("\ufdd0'demog")).call(null, data);
+    return[cljs.core.str(cljs_intro.views.show_player_demog.call(null, demog__160266)), cljs.core.str(cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0'pos")).call(null, demog__160266), "G") ? [cljs.core.str(cljs_intro.views.show_goalie_stats.call(null, (new cljs.core.Keyword("\ufdd0'goalie")).call(null, data))), cljs.core.str(cljs_intro.views.show_shooting_stats.call(null, (new cljs.core.Keyword("\ufdd0'scoring")).call(null, data)))].join("") : cljs_intro.views.show_shooting_stats.call(null, 
     (new cljs.core.Keyword("\ufdd0'scoring")).call(null, data)))].join("")
   }()))].join("")
 };
@@ -28295,11 +28295,10 @@ goog.require("domina.xpath");
 goog.require("domina");
 cljs_intro.search.search_button = domina.by_id.call(null, "search-btn");
 cljs_intro.search.display_results = function display_results(json) {
-  var data__144060 = cljs.core.js__GT_clj.call(null, json.target.getResponseJson(), "\ufdd0'keywordize-keys", true);
-  var demog__144061 = (new cljs.core.Keyword("\ufdd0'demog")).call(null, data__144060);
-  var res_div__144062 = domina.xpath.xpath.call(null, "//div[@id='results']");
-  domina.destroy_children_BANG_.call(null, res_div__144062);
-  return domina.append_BANG_.call(null, res_div__144062, cljs_intro.views.show_stats.call(null, data__144060))
+  var data__152035 = cljs.core.js__GT_clj.call(null, json.target.getResponseJson(), "\ufdd0'keywordize-keys", true);
+  var res_div__152036 = domina.xpath.xpath.call(null, "//div[@id='results']");
+  domina.destroy_children_BANG_.call(null, res_div__152036);
+  return domina.append_BANG_.call(null, res_div__152036, cljs_intro.views.show_stats.call(null, data__152035))
 };
 cljs_intro.search.player_lookup = function player_lookup(last_name) {
   return goog.net.XhrIo.send([cljs.core.str("/player/"), cljs.core.str(last_name)].join(""), cljs_intro.search.display_results)

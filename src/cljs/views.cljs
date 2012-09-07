@@ -5,12 +5,6 @@
 	 		[hiccups.core :as hiccups]))
 
 
-(hiccups/defhtml create-player-demog [{:keys [firstname lastname pos]}]
-	[:div.demog
-	 [:div.page-header.tabs.clearfix.nm
-	  [:h2 (str firstname " " lastname)
-	  [:span (str "&nbsp;&nbsp;(" pos ")") ]]]])
-
 (hiccups/defhtml create-shooting-stats [{:keys [year tmid pos gp g a pts pim plusminus ppg ppa shg sha gwg
 		  														gtg sog postgp postg posta postpts postpim postplusminus
 		  														postppg postppa postshg postsha postgwg postsog]}]
@@ -154,9 +148,15 @@
 			[:br]
 			(show-goalie-playoff-stats goalies)])
 
+(hiccups/defhtml show-player-demog [{:keys [firstname lastname pos]}]
+	[:div.demog
+	 [:div.page-header.tabs.clearfix.nm
+	  [:h2 (str firstname " " lastname)
+	  [:span (str "&nbsp;&nbsp;(" pos ")") ]]]])
+
 (hiccups/defhtml show-stats [data]
   (let [demog (:demog data)]
-		(str (create-player-demog demog)
+		(str (show-player-demog demog)
 	  (if (= (:pos demog) "G")
       (str (show-goalie-stats (:goalie data))
 		      (show-shooting-stats (:scoring data)))

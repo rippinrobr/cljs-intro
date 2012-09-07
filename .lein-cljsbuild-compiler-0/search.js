@@ -11,15 +11,13 @@ goog.require('domina');
 cljs_intro.search.search_button = domina.by_id.call(null,"search-btn");
 /**
 * converts the returned JSON to clj data, removes old html in the
-* results div and
-* calls the function to display the new stats
+* results div and calls the function to display the new stats
 */
 cljs_intro.search.display_results = (function display_results(json){
-var data__144060 = cljs.core.js__GT_clj.call(null,json.target.getResponseJson(),"\uFDD0'keywordize-keys",true);
-var demog__144061 = (new cljs.core.Keyword("\uFDD0'demog")).call(null,data__144060);
-var res_div__144062 = domina.xpath.xpath.call(null,"//div[@id='results']");
-domina.destroy_children_BANG_.call(null,res_div__144062);
-return domina.append_BANG_.call(null,res_div__144062,cljs_intro.views.show_stats.call(null,data__144060));
+var data__152035 = cljs.core.js__GT_clj.call(null,json.target.getResponseJson(),"\uFDD0'keywordize-keys",true);
+var res_div__152036 = domina.xpath.xpath.call(null,"//div[@id='results']");
+domina.destroy_children_BANG_.call(null,res_div__152036);
+return domina.append_BANG_.call(null,res_div__152036,cljs_intro.views.show_stats.call(null,data__152035));
 });
 /**
 * calls the player web service using goog.net.XhrIo to make

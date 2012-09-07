@@ -15,12 +15,10 @@
 ; json to clj data.  Removes any current stats and then calls the function 
 ; to create the new stats view
 (defn ^{:doc "converts the returned JSON to clj data, removes old html in the
-              results div and 
-	     			  calls the function to display the new stats"} 
+              results div and calls the function to display the new stats"} 
 	display-results [json]
  (let [data (js->clj (.getResponseJson (.-target json)) :keywordize-keys true)
-       demog (:demog data)
-			 res-div (dx/xpath "//div[@id='results']")]
+       res-div (dx/xpath "//div[@id='results']")]
   (d/destroy-children! res-div)
   (d/append!  res-div (v/show-stats data))))
 
