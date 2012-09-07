@@ -14,7 +14,8 @@
 ; Gets the results of the call /player/:lastname and converts the data from
 ; json to clj data.  Removes any current stats and then calls the function 
 ; to create the new stats view
-(defn ^{:doc "converts the returned JSON to clj data, removes old stats and 
+(defn ^{:doc "converts the returned JSON to clj data, removes old html in the
+              results div and 
 	     			  calls the function to display the new stats"} 
 	display-results [json]
  (let [data (js->clj (.getResponseJson (.-target json)) :keywordize-keys true)
@@ -27,7 +28,7 @@
 (defn ^{:doc "calls the player web service using goog.net.XhrIo to make
               the call." }
   player-lookup [last-name]
-	(.send goog.net.XhrIo (str "http://localhost:8888/player/" last-name)
+	(.send goog.net.XhrIo (str "/player/" last-name)
 	   display-results)) 
 	
 ; Event handler for the button
