@@ -1,15 +1,20 @@
 <html>
   <head>
 	<title>My Clojure Adventure's Hockey Player Lookup</title>
+	 <link href="/css/bootstrap.css" rel="stylesheet">
   </head> 
   <body> 
-	<div>
-		<form>
+   <body>
+  	<div class="container content">
+	 <div class="row">
+	   <div class="span12" style="margin-top: 1em; margin-left: 30px;">
+		<form class="form-search">
 		<input type="text" id="lname" placeholder="Player's Last Name" />
 		<input type="button" id="search-btn" value="Get Stats!" />
 		</form>
-	</div>
+	   </div>
+	 </div>
 	<div id="results"></div>
-		<script type="text/javascript" src="./hockey.js"></script> 
+  		<script type="text/javascript" src="./hockey.js"></script> 
   </body> 
 </html>

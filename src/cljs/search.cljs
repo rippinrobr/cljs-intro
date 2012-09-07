@@ -15,12 +15,12 @@
 (def ^{:doc "Reference to the search-button DOM object" }
    search-button (d/by-id "search-btn"))
 
-(hiccups/defhtml create-player-demog [firstname lastname pos birthday]
+(hiccups/defhtml create-player-demog [firstname lastname pos]
 	[:div.demog
-	  [:h2 (str firstname " " lastname)]
-	  [:div [:span (str "Postition: " pos) ]]
-	  [:div [:span (str "Birthday: " birthday)]]])
-
+	 [:div.page-header.tabs.clearfix.nm
+	  [:h2 (str firstname " " lastname)
+	  [:span (str "&nbsp;&nbsp;(" pos ")") ]]]])
+	
 (hiccups/defhtml create-shooting-stats [{:keys [year tmid pos gp g a pts pim plusminus ppg ppa shg sha gwg
 		  														gtg sog postgp postg posta postpts postpim postplusminus
 		  														postppg postppa postshg postsha postgwg postsog]}]
@@ -41,24 +41,48 @@
 			[:td gwg]
 			[:td gtg]
 			[:td sog]
-			[:td postgp]
-			[:td postg]
-			[:td posta]
-			[:td postpts]
-			[:td postplusminus]
-			[:td postppg]
-			[:td postppa]
-			[:td postshg]
-			[:td postsha]
-			[:td postgwg]
-			[:td postsog]
+			;[:td postgp]
+			;[:td postg]
+			;[:td posta]
+			;[:td postpts]
+			;[:td postplusminus]
+			;[:td postppg]
+			;[:td postppa]
+			;[:td postshg]
+			;[:td postsha]
+			;[:td postgwg]
+			;[:td postsog]
 		]
 		)
 
+		(hiccups/defhtml create-playoff-shooting-stats [{:keys [year tmid pos postgp postg posta postpts postpim postplusminus
+				  														postppg postppa postshg postsha postgwg postgtg postsog]}]
+				[:tr
+				  [:td year]
+				  [:td tmid]
+					[:td pos]
+					[:td postgp]
+					[:td postg]
+					[:td posta]
+					[:td postpts]
+					[:td postpim]
+					[:td postplusminus]
+					[:td postppg]
+					[:td postppa]
+					[:td postshg]
+					[:td postsha]
+					[:td postgwg]
+					[:td postsog]
+				]
+				)
+
+
 (hiccups/defhtml show-shooting-stats [stats]
+	[:br]
 	[:div.scoring
-	  [:table
-			[:Caption "Scoring"]
+	  [:h2 "Scoring"]
+	  [:h3 "Regular Season"]
+	  [:table {:class "table"}
 			[:thead
 				[:th "Season"]
 				[:th "Teamid"]
@@ -76,21 +100,30 @@
 				[:th "GWG"]
 				[:th "GTG"]
 				[:th "SOG"]
-				[:th "Post G"]
-				[:th "Post A"]
-				[:th "Post PTS"]
-				[:th "Post PIMS"]
-				[:th "Post +/-"]
-				[:th "Post PPG"]
-				[:th "Post PPA"]
-				[:th "Post SHG"]
-				[:th "Post SHA"]
-				[:th "Post GWG"]
-				[:th "Post GTG"]
-				[:th "Post SOG"]
 				]
 			[:tbody
-				(map create-shooting-stats stats)]]])
+				(map create-shooting-stats stats)]]
+				
+		 		[:h3 "Post Season"]
+			  [:table {:class "table"}
+					[:thead
+						[:th "Season"]
+						[:th "Teamid"]
+						[:th "Pos"]
+						[:th "GP"]
+						[:th "G"]
+						[:th "A"]
+						[:th "PTS"]
+						[:th "PIMS"]
+						[:th "+/-"]
+						[:th "PPG"]
+						[:th "PPA"]
+						[:th "SHG"]
+						[:th "SHA"]
+						[:th "GWG"]
+						[:th "SOG"]]
+					[:tbody
+						(map create-playoff-shooting-stats stats)]]])
 
 (hiccups/defhtml create-goalie-stats [{:keys [year tmid gp min w l tol eng sho ga sa postgp postmin postw
 																							postl postt posteng postsho postga postsa]}]
@@ -106,21 +139,39 @@
 				[:td sho]
 				[:td ga]
 				[:td sa]
-				[:td postgp]
-				[:td postmin]
-				[:td postw]
-				[:td postl]
-				[:td postt]
-				[:td posteng]
-				[:td postsho]
-				[:td postga]
-				[:td postsa]]
+				;[:td postgp]
+				;[:td postmin]
+				;[:td postw]
+				;[:td postl]
+				;[:td postt]
+				;[:td posteng]
+				;[:td postsho]
+				;[:td postga]
+				;[:td postsa]
+				]
 	)
+
+	(hiccups/defhtml create-goalie-playoff-stats [{:keys [year tmid postgp postmin postw
+																								postl postt posteng postsho postga postsa]}]
+				[:tr
+	        [:td year]
+				  [:td tmid]
+					[:td postgp]
+					[:td postmin]
+					[:td postw]
+					[:td postl]
+					[:td postt]
+					[:td posteng]
+					[:td postsho]
+					[:td postga]
+					[:td postsa]
+					]
+		)
 
 (hiccups/defhtml show-goalie-stats [goalies]
 	[:div.goalies
-	  [:table
-			[:Caption "Goalies"]
+	  [:h3 "Regular Season"]
+	  [:table.table
 			[:thead
 				[:th "Season"]
 				[:th "Teamid"]
@@ -132,20 +183,36 @@
 				[:th "ENG"]
 				[:th "SHO"]
 				[:th "GA"]
-				[:th "SA"]
-				[:th "Post GP"]
-				[:th "Post Min"]
-				[:th "Post W"]
-				[:th "Post L"]
-				[:th "Post TOL"]
-				[:th "Post ENG"]
-				[:th "Post SHO"]
-				[:th "Post GA"]
-				[:th "Post SA"]]
-			[:tbody (map create-goalie-stats goalies)]]])
+				[:th "SA"]]
+				;[:th "Post GP"]
+				;[:th "Post Min"]
+				;[:th "Post W"]
+				;[:th "Post L"]
+				;[:th "Post TOL"]
+				;[:th "Post ENG"]
+				;[:th "Post SHO"]
+				;[:th "Post GA"]
+				;[:th "Post SA"]]
+			[:tbody (map create-goalie-stats goalies)]]
+			[:br]
+			[:h3 "Post Season"]
+		  [:table.table
+				[:thead
+					[:th "Season"]
+					[:th "Teamid"]
+					[:th "GP"]
+					[:th "Min"]
+					[:th "W"]
+					[:th "L"]
+					[:th "TOL"]
+					[:th "ENG"]
+					[:th "SHO"]
+					[:th "GA"]
+					[:th "SA"]]
+				[:tbody (map create-goalie-playoff-stats goalies)]]])
 	
 (defn show-player-demog [{:keys [firstname lastname pos birthday birthmon birthyear]}]
- (create-player-demog firstname lastname pos (str birthmon "/" birthday "/" birthyear )))
+ (create-player-demog firstname lastname pos ))
 
 (defn display-results [json]
  (let [data (js->clj (.getResponseJson (.-target json)) :keywordize-keys true)
