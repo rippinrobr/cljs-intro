@@ -2,6 +2,7 @@
 	(:require 
 			[domina :as d]
 			[domina.xpath :as dx]
+			[domina.css :as dc]
 			[hiccups.runtime :as hiccupsrt]
 			[clojure.browser.event :as event]
 			[goog.net.XhrIo :as jsonp]
@@ -148,9 +149,10 @@
 
 (defn display-results [json]
  (let [data (js->clj (.getResponseJson (.-target json)) :keywordize-keys true)
-       demog (:demog data)]
-  (.log js/console (str "'" (:pos demog) "' equal G? => " (= (:pos demog) "G")))
-	(d/append! (dx/xpath "//div[@id='results']") 
+       demog (:demog data)
+			 res-div (dx/xpath "//div[@id='results']")]
+  (d/destroy-children! res-div)
+  (d/append!  res-div
 	  (str (show-player-demog demog)
 		 (if (= (:pos demog) "G")
 	     (str (show-goalie-stats (:goalie data))
