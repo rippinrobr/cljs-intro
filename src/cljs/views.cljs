@@ -152,7 +152,7 @@
 	[:div.demog
 	 [:div.page-header.tabs.clearfix.nm
 	  [:h2 (str firstname " " lastname)
-	  [:span (str "&nbsp;&nbsp;(" pos ")") ]]]])
+	  [:span.pos (str "(" pos ")") ]]]])
 
 (hiccups/defhtml show-stats [data]
   (let [demog (:demog data)]
