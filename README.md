@@ -1,4 +1,13 @@
-cljs-intro
-==========
+# cljs-intro
 
-Code for my ClojureScript intro series
+An introduction to ClojureScript.  Follow me as I learn how to build an app using ClojureScript
+
+## Usage
+
+Comming Soon
+
+## License
+
+Copyright (C) 2012 FIXME
+
+Distributed under the Eclipse Public License, the same as Clojure.
