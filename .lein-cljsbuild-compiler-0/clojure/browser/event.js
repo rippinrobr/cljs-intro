@@ -5,23 +5,23 @@ goog.require('goog.events.EventTarget');
 goog.require('goog.events');
 clojure.browser.event.EventType = {};
 clojure.browser.event.event_types = (function event_types(this$){
-if((function (){var and__3822__auto____11302 = this$;
-if(and__3822__auto____11302)
+if((function (){var and__3822__auto____12535 = this$;
+if(and__3822__auto____12535)
 {return this$.clojure$browser$event$EventType$event_types$arity$1;
 } else
-{return and__3822__auto____11302;
+{return and__3822__auto____12535;
 }
 })())
 {return this$.clojure$browser$event$EventType$event_types$arity$1(this$);
 } else
-{var x__2389__auto____11303 = (((this$ == null))?null:this$);
-return (function (){var or__3824__auto____11304 = (clojure.browser.event.event_types[goog.typeOf(x__2389__auto____11303)]);
-if(or__3824__auto____11304)
-{return or__3824__auto____11304;
+{var x__2389__auto____12536 = (((this$ == null))?null:this$);
+return (function (){var or__3824__auto____12537 = (clojure.browser.event.event_types[goog.typeOf(x__2389__auto____12536)]);
+if(or__3824__auto____12537)
+{return or__3824__auto____12537;
 } else
-{var or__3824__auto____11305 = (clojure.browser.event.event_types["_"]);
-if(or__3824__auto____11305)
-{return or__3824__auto____11305;
+{var or__3824__auto____12538 = (clojure.browser.event.event_types["_"]);
+if(or__3824__auto____12538)
+{return or__3824__auto____12538;
 } else
 {throw cljs.core.missing_protocol.call(null,"EventType.event-types",this$);
 }
@@ -31,20 +31,20 @@ if(or__3824__auto____11305)
 });
 Element.prototype.clojure$browser$event$EventType$ = true;
 Element.prototype.clojure$browser$event$EventType$event_types$arity$1 = (function (this$){
-return cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__11306){
-var vec__11307__11308 = p__11306;
-var k__11309 = cljs.core.nth.call(null,vec__11307__11308,0,null);
-var v__11310 = cljs.core.nth.call(null,vec__11307__11308,1,null);
-return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k__11309.toLowerCase()),v__11310], true);
+return cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__12539){
+var vec__12540__12541 = p__12539;
+var k__12542 = cljs.core.nth.call(null,vec__12540__12541,0,null);
+var v__12543 = cljs.core.nth.call(null,vec__12540__12541,1,null);
+return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k__12542.toLowerCase()),v__12543], true);
 }),cljs.core.merge.call(null,cljs.core.js__GT_clj.call(null,goog.events.EventType))));
 });
 goog.events.EventTarget.prototype.clojure$browser$event$EventType$ = true;
 goog.events.EventTarget.prototype.clojure$browser$event$EventType$event_types$arity$1 = (function (this$){
-return cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__11311){
-var vec__11312__11313 = p__11311;
-var k__11314 = cljs.core.nth.call(null,vec__11312__11313,0,null);
-var v__11315 = cljs.core.nth.call(null,vec__11312__11313,1,null);
-return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k__11314.toLowerCase()),v__11315], true);
+return cljs.core.into.call(null,cljs.core.ObjMap.EMPTY,cljs.core.map.call(null,(function (p__12544){
+var vec__12545__12546 = p__12544;
+var k__12547 = cljs.core.nth.call(null,vec__12545__12546,0,null);
+var v__12548 = cljs.core.nth.call(null,vec__12545__12546,1,null);
+return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null,k__12547.toLowerCase()),v__12548], true);
 }),cljs.core.merge.call(null,cljs.core.js__GT_clj.call(null,goog.events.EventType))));
 });
 clojure.browser.event.listen = (function() {
