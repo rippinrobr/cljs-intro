@@ -10,34 +10,49 @@ goog.require('domina');
 * Reference to the search-button DOM object
 */
 cljs_intro.search.search_button = domina.by_id.call(null,"search-btn");
-/**
-* Reference to the previous-search-btn DOM object
-*/
-cljs_intro.search.previous_search_button = domina.by_id.call(null,"previous-search-btn");
-domina.set_styles_BANG_.call(null,cljs_intro.search.previous_search_button,cljs.core.ObjMap.fromObject(["\uFDD0'display"],{"\uFDD0'display":"none"}));
+cljs_intro.search.lastname_field = domina.by_id.call(null,"lname");
+cljs_intro.search.history_button = domina.by_id.call(null,"history-btn");
+domina.set_styles_BANG_.call(null,cljs_intro.search.history_button,cljs.core.ObjMap.fromObject(["\uFDD0'display"],{"\uFDD0'display":"none"}));
+cljs_intro.search.update_results_div = (function update_results_div(data){
+var res_div__534375 = domina.xpath.xpath.call(null,"//div[@id='results']");
+domina.destroy_children_BANG_.call(null,res_div__534375);
+return domina.append_BANG_.call(null,res_div__534375,data);
+});
 /**
 * converts the returned JSON to clj data, removes old html in the
 * results div and calls the function to display the new stats
 */
 cljs_intro.search.display_results = (function display_results(data){
-var res_div__669761 = domina.xpath.xpath.call(null,"//div[@id='results']");
-domina.destroy_children_BANG_.call(null,res_div__669761);
-return domina.append_BANG_.call(null,res_div__669761,cljs_intro.views.show_stats.call(null,data));
+return cljs_intro.search.update_results_div.call(null,cljs_intro.views.show_stats.call(null,data));
 });
 /**
-* calls the player web service using goog.net.XhrIo to make
-* the call.
+* calls the player web service using goog.net.XhrIo to make the call.
 */
-cljs_intro.search.player_lookup = (function player_lookup(p__669762){
-var map__669767__669768 = p__669762;
-var map__669767__669769 = ((cljs.core.seq_QMARK_.call(null,map__669767__669768))?cljs.core.apply.call(null,cljs.core.hash_map,map__669767__669768):map__669767__669768);
-var new__669770 = cljs.core._lookup.call(null,map__669767__669769,"\uFDD0'new",null);
-return goog.net.XhrIo.send([cljs.core.str("/player/"),cljs.core.str((new cljs.core.Keyword("\uFDD0'lastname")).call(null,new__669770))].join(''),(function (data){
+cljs_intro.search.player_lookup = (function player_lookup(lastname){
+return goog.net.XhrIo.send([cljs.core.str("/player/"),cljs.core.str(lastname)].join(''),(function (data){
 return cljs_intro.pubsub.publish_results.call(null,cljs.core.js__GT_clj.call(null,data.target.getResponseJson(),"\uFDD0'keywordize-keys",true));
 }));
 });
-cljs_intro.pubsub.subscribe_to_search.call(null,cljs_intro.search.player_lookup);
+cljs_intro.search.search_state_change = (function search_state_change(p__534376){
+var map__534381__534382 = p__534376;
+var map__534381__534383 = ((cljs.core.seq_QMARK_.call(null,map__534381__534382))?cljs.core.apply.call(null,cljs.core.hash_map,map__534381__534382):map__534381__534382);
+var new__534384 = cljs.core._lookup.call(null,map__534381__534383,"\uFDD0'new",null);
+if((cljs.core.count.call(null,(new cljs.core.Keyword("\uFDD0'previous-searches")).call(null,new__534384)) > 0))
+{return domina.set_styles_BANG_.call(null,cljs_intro.search.history_button,cljs.core.ObjMap.fromObject(["\uFDD0'display"],{"\uFDD0'display":""}));
+} else
+{return null;
+}
+});
+cljs_intro.search.view_history = (function view_history(current_lname){
+return cljs_intro.search.update_results_div.call(null,cljs_intro.views.show_history.call(null,cljs.core.conj.call(null,(new cljs.core.Keyword("\uFDD0'previous-searches")).call(null,cljs.core.deref.call(null,cljs_intro.pubsub.search_state)),current_lname)));
+});
+cljs_intro.pubsub.subscribe_to.call(null,cljs_intro.pubsub.search_topic,cljs_intro.search.player_lookup);
 cljs_intro.pubsub.subscribe_to.call(null,cljs_intro.pubsub.results_topic,cljs_intro.search.display_results);
+cljs_intro.pubsub.subscribe_to.call(null,cljs_intro.pubsub.search_state,cljs_intro.search.search_state_change);
+cljs_intro.pubsub.subscribe_to.call(null,cljs_intro.pubsub.history_topic,cljs_intro.search.view_history);
 clojure.browser.event.listen.call(null,cljs_intro.search.search_button,"click",(function (){
-return cljs.core.swap_BANG_.call(null,cljs_intro.pubsub.search_state,cljs.core.merge,cljs.core.ObjMap.fromObject(["\uFDD0'lastname"],{"\uFDD0'lastname":domina.value.call(null,domina.by_id.call(null,"lname"))}));
+return cljs_intro.pubsub.publish_search_string.call(null,domina.value.call(null,cljs_intro.search.lastname_field));
+}));
+clojure.browser.event.listen.call(null,cljs_intro.search.history_button,"click",(function (){
+return cljs_intro.pubsub.publish_view_history.call(null,domina.value.call(null,cljs_intro.search.lastname_field));
 }));

@@ -5,57 +5,33 @@
 			[shoreleave.pubsubs.protocols :as pubsub]))
 
 (def bus (pbus/bus))
-(def search-state (atom {:lastname "" }))
-(def results-topic (pubsub/topicify :results))
-
-;(def search-results (atom {}))
-
-
-(defn publish-results [res]
-  (pubsub/publish bus results-topic res))
-
-(defn subscribe-to [topic f]
-	(pubsub/subscribe bus topic f))
-
-(defn subscribe-to-search [f]
-	(pubsub/subscribe bus search-state f))
-
-;(defn subscribe-to-results [f]
-;	(pubsub/subscribe bus search-results f))
-
-(defn console-logger [data]
-	(js/console.log (pr-str data)))
-
-(pubsub/publishize search-state bus)
-;(pubsub/publishize search-results bus)
-
-(subscribe-to-search console-logger)
-;(subscribe-to-results console-logger)
-
-(comment 
-; shoreleave.pubsub related defs
-(def bus (pbus/bus))
-(def results-topic (pubsub/topicify :results))
 (def search-topic (pubsub/topicify :search))
-
-
+(def results-topic (pubsub/topicify :results))
+(def history-topic (pubsub/topicify :history))
 (def search-state (atom {:lastname "" :previous-searches () }))
 
+(defn publish-results [res]
+  (pubsub/publish bus results-topic res))
+
+(defn add-previous-search [prev-lname]
+	(if (not= prev-lname "")
+	  (conj (:previous-searches @search-state) prev-lname)))
+
+(defn publish-search-string [lname]
+	(let [prev-lname (:lastname @search-state)]
+	  (swap! search-state merge {:lastname lname :previous-searches (add-previous-search prev-lname)})
+	  (pubsub/publish bus search-topic lname)))
+
+(defn publish-view-history [current-lname]
+	(pubsub/publish bus history-topic current-lname))
+	
 (defn subscribe-to [topic f]
 	(pubsub/subscribe bus topic f))
 
 (defn console-logger [data]
 	(js/console.log (pr-str data)))
 
-(defn publish-results [res]
-  (pubsub/publish bus results-topic res))
-
-
 (pubsub/publishize search-state bus)
-;(pubsub/publishize search-results bus)
-;(pubsub/publishize results bus)
 
+(subscribe-to search-topic (fn [data] (str (console-logger (str "Searched for " data)))))
 (subscribe-to search-state console-logger)
-(subscribe-to results console-logger)
-
-)

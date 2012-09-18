@@ -161,3 +161,10 @@
       (str (show-goalie-stats (:goalie data))
 		      (show-shooting-stats (:scoring data)))
 	    (show-shooting-stats (:scoring data))))))
+	
+(hiccups/defhtml show-history [data]
+	[:div.history
+	 [:h3 "Search History"]
+	 [:ul
+		 (map #(str "<li>" % "</li>") data)
+		]])
