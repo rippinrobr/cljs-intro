@@ -20,7 +20,7 @@ An introduction to ClojureScript.  Follow me as I learn how to build an app usin
 
 ## Part 4
 
-- Article: [Using Shoreleave-pubsub] - Coming Soon
+- Article: Using Shoreleave-remote - Coming Soon
 - Code: Not Available
 
 ## License
