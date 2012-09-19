@@ -30,7 +30,9 @@
 (defn ^{:doc "calls the player web service using goog.net.XhrIo to make the call." }
   player-lookup [lastname]
   (.send goog.net.XhrIo (str "/player/" lastname)
-	   (fn [data] (ps/publish-results (js->clj (.getResponseJson (.-target data)) :keywordize-keys true))))) 
+	   (fn [data] 
+		   (ps/publish-results 
+					(js->clj (.getResponseJson (.-target data)) :keywordize-keys true))))) 
 
 (defn search-state-change [{:keys [new]}]
 	(if (> (count (:previous-searches new)) 0)
@@ -39,12 +41,13 @@
 (defn view-history [current-lname]
 	(update-results-div (v/show-history (conj (:previous-searches @ps/search-state) current-lname))))
 
+; Subscriptions
 (ps/subscribe-to ps/search-topic player-lookup)
 (ps/subscribe-to ps/results-topic display-results)
 (ps/subscribe-to ps/search-state search-state-change)
 (ps/subscribe-to ps/history-topic view-history)
 
-; Event handler for the button
+; Event handlers
 (event/listen search-button "click"
  (fn [] (ps/publish-search-string (d/value lastname-field))))
 

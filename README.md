@@ -14,7 +14,14 @@ An introduction to ClojureScript.  Follow me as I learn how to build an app usin
 
 ## Part 3
 
-Coming soon
+- Article: [Using Shoreleave-pubsub](http://www.myclojureadventure.com/2012/09/intro-to-clojurescript-part-3-using.html)
+- Code: [`part-3` branch](https://github.com/rippinrobr/cljs-intro/tree/part-3)
+
+
+## Part 4
+
+- Article: [Using Shoreleave-pubsub] - Coming Soon
+- Code: Not Available
 
 ## License
 

@@ -14,9 +14,9 @@ cljs_intro.search.lastname_field = domina.by_id.call(null,"lname");
 cljs_intro.search.history_button = domina.by_id.call(null,"history-btn");
 domina.set_styles_BANG_.call(null,cljs_intro.search.history_button,cljs.core.ObjMap.fromObject(["\uFDD0'display"],{"\uFDD0'display":"none"}));
 cljs_intro.search.update_results_div = (function update_results_div(data){
-var res_div__534375 = domina.xpath.xpath.call(null,"//div[@id='results']");
-domina.destroy_children_BANG_.call(null,res_div__534375);
-return domina.append_BANG_.call(null,res_div__534375,data);
+var res_div__45882 = domina.xpath.xpath.call(null,"//div[@id='results']");
+domina.destroy_children_BANG_.call(null,res_div__45882);
+return domina.append_BANG_.call(null,res_div__45882,data);
 });
 /**
 * converts the returned JSON to clj data, removes old html in the
@@ -33,11 +33,11 @@ return goog.net.XhrIo.send([cljs.core.str("/player/"),cljs.core.str(lastname)].j
 return cljs_intro.pubsub.publish_results.call(null,cljs.core.js__GT_clj.call(null,data.target.getResponseJson(),"\uFDD0'keywordize-keys",true));
 }));
 });
-cljs_intro.search.search_state_change = (function search_state_change(p__534376){
-var map__534381__534382 = p__534376;
-var map__534381__534383 = ((cljs.core.seq_QMARK_.call(null,map__534381__534382))?cljs.core.apply.call(null,cljs.core.hash_map,map__534381__534382):map__534381__534382);
-var new__534384 = cljs.core._lookup.call(null,map__534381__534383,"\uFDD0'new",null);
-if((cljs.core.count.call(null,(new cljs.core.Keyword("\uFDD0'previous-searches")).call(null,new__534384)) > 0))
+cljs_intro.search.search_state_change = (function search_state_change(p__45883){
+var map__45888__45889 = p__45883;
+var map__45888__45890 = ((cljs.core.seq_QMARK_.call(null,map__45888__45889))?cljs.core.apply.call(null,cljs.core.hash_map,map__45888__45889):map__45888__45889);
+var new__45891 = cljs.core._lookup.call(null,map__45888__45890,"\uFDD0'new",null);
+if((cljs.core.count.call(null,(new cljs.core.Keyword("\uFDD0'previous-searches")).call(null,new__45891)) > 0))
 {return domina.set_styles_BANG_.call(null,cljs_intro.search.history_button,cljs.core.ObjMap.fromObject(["\uFDD0'display"],{"\uFDD0'display":""}));
 } else
 {return null;

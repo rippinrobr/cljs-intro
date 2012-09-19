@@ -481,6 +481,15 @@ goog.base = function(me, opt_methodName, var_args) {
 goog.scope = function(fn) {
   fn.call(goog.global)
 };
+goog.provide("goog.debug.Error");
+goog.debug.Error = function(opt_msg) {
+  this.stack = (new Error).stack || "";
+  if(opt_msg) {
+    this.message = String(opt_msg)
+  }
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.provide("goog.string");
 goog.provide("goog.string.Unicode");
 goog.string.Unicode = {NBSP:"\u00a0"};
@@ -894,15 +903,6 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(str) {
   return goog.string.toSelectorCaseCache_[str] || (goog.string.toSelectorCaseCache_[str] = String(str).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
-goog.provide("goog.debug.Error");
-goog.debug.Error = function(opt_msg) {
-  this.stack = (new Error).stack || "";
-  if(opt_msg) {
-    this.message = String(opt_msg)
-  }
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.provide("goog.asserts");
 goog.provide("goog.asserts.AssertionError");
 goog.require("goog.debug.Error");
@@ -26323,6 +26323,57 @@ shoreleave.pubsubs.simple.subscribers_count = function subscribers_count(bus, to
 shoreleave.pubsubs.simple.bus = function bus() {
   return new goog.pubsub.PubSub
 };
+goog.provide("cljs_intro.pubsub");
+goog.require("cljs.core");
+goog.require("shoreleave.pubsubs.protocols");
+goog.require("shoreleave.pubsubs.simple");
+cljs_intro.pubsub.bus = shoreleave.pubsubs.simple.bus.call(null);
+cljs_intro.pubsub.search_topic = shoreleave.pubsubs.protocols.topicify.call(null, "\ufdd0'search");
+cljs_intro.pubsub.results_topic = shoreleave.pubsubs.protocols.topicify.call(null, "\ufdd0'results");
+cljs_intro.pubsub.history_topic = shoreleave.pubsubs.protocols.topicify.call(null, "\ufdd0'history");
+cljs_intro.pubsub.search_state = cljs.core.atom.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'lastname", "\ufdd0'previous-searches"], {"\ufdd0'lastname":"", "\ufdd0'previous-searches":cljs.core.List.EMPTY}));
+shoreleave.pubsubs.protocols.publishize.call(null, cljs_intro.pubsub.search_state, cljs_intro.pubsub.bus);
+cljs_intro.pubsub.publish_results = function publish_results(res) {
+  return shoreleave.pubsubs.protocols.publish.call(null, cljs_intro.pubsub.bus, cljs_intro.pubsub.results_topic, res)
+};
+cljs_intro.pubsub.add_previous_search = function add_previous_search(prev_lname) {
+  if(cljs.core.not_EQ_.call(null, prev_lname, "")) {
+    return cljs.core.conj.call(null, (new cljs.core.Keyword("\ufdd0'previous-searches")).call(null, cljs.core.deref.call(null, cljs_intro.pubsub.search_state)), prev_lname)
+  }else {
+    return null
+  }
+};
+cljs_intro.pubsub.publish_search_string = function publish_search_string(lname) {
+  var prev_lname__33898 = (new cljs.core.Keyword("\ufdd0'lastname")).call(null, cljs.core.deref.call(null, cljs_intro.pubsub.search_state));
+  cljs.core.swap_BANG_.call(null, cljs_intro.pubsub.search_state, cljs.core.merge, cljs.core.ObjMap.fromObject(["\ufdd0'lastname", "\ufdd0'previous-searches"], {"\ufdd0'lastname":lname, "\ufdd0'previous-searches":cljs_intro.pubsub.add_previous_search.call(null, prev_lname__33898)}));
+  return shoreleave.pubsubs.protocols.publish.call(null, cljs_intro.pubsub.bus, cljs_intro.pubsub.search_topic, lname)
+};
+cljs_intro.pubsub.publish_view_history = function publish_view_history(current_lname) {
+  return shoreleave.pubsubs.protocols.publish.call(null, cljs_intro.pubsub.bus, cljs_intro.pubsub.history_topic, current_lname)
+};
+cljs_intro.pubsub.subscribe_to = function subscribe_to(topic, f) {
+  return shoreleave.pubsubs.protocols.subscribe.call(null, cljs_intro.pubsub.bus, topic, f)
+};
+cljs_intro.pubsub.console_logger = function console_logger(data) {
+  return console.log(cljs.core.pr_str.call(null, data))
+};
+cljs_intro.pubsub.subscribe_to.call(null, cljs_intro.pubsub.search_topic, function(data) {
+  return[cljs.core.str(cljs_intro.pubsub.console_logger.call(null, [cljs.core.str("Searched for "), cljs.core.str(data)].join("")))].join("")
+});
+cljs_intro.pubsub.subscribe_to.call(null, cljs_intro.pubsub.search_state, cljs_intro.pubsub.console_logger);
+goog.provide("cljs_intro.hello");
+goog.require("cljs.core");
+cljs_intro.hello.greeting = function greeting() {
+  return document.write("<p>Hello Hockey Fans!</p>")
+};
+goog.exportSymbol("cljs_intro.hello.greeting", cljs_intro.hello.greeting);
+goog.provide("goog.dom.BrowserFeature");
+goog.require("goog.userAgent");
+goog.dom.BrowserFeature = {CAN_ADD_NAME_OR_TYPE_ATTRIBUTES:!goog.userAgent.IE || goog.userAgent.isVersion("9"), CAN_USE_CHILDREN_ATTRIBUTE:!goog.userAgent.GECKO && !goog.userAgent.IE || goog.userAgent.IE && goog.userAgent.isVersion("9") || goog.userAgent.GECKO && goog.userAgent.isVersion("1.9.1"), CAN_USE_INNER_TEXT:goog.userAgent.IE && !goog.userAgent.isVersion("9"), INNER_HTML_NEEDS_SCOPED_ELEMENT:goog.userAgent.IE};
+goog.provide("goog.dom.TagName");
+goog.dom.TagName = {A:"A", ABBR:"ABBR", ACRONYM:"ACRONYM", ADDRESS:"ADDRESS", APPLET:"APPLET", AREA:"AREA", B:"B", BASE:"BASE", BASEFONT:"BASEFONT", BDO:"BDO", BIG:"BIG", BLOCKQUOTE:"BLOCKQUOTE", BODY:"BODY", BR:"BR", BUTTON:"BUTTON", CANVAS:"CANVAS", CAPTION:"CAPTION", CENTER:"CENTER", CITE:"CITE", CODE:"CODE", COL:"COL", COLGROUP:"COLGROUP", DD:"DD", DEL:"DEL", DFN:"DFN", DIR:"DIR", DIV:"DIV", DL:"DL", DT:"DT", EM:"EM", FIELDSET:"FIELDSET", FONT:"FONT", FORM:"FORM", FRAME:"FRAME", FRAMESET:"FRAMESET", 
+H1:"H1", H2:"H2", H3:"H3", H4:"H4", H5:"H5", H6:"H6", HEAD:"HEAD", HR:"HR", HTML:"HTML", I:"I", IFRAME:"IFRAME", IMG:"IMG", INPUT:"INPUT", INS:"INS", ISINDEX:"ISINDEX", KBD:"KBD", LABEL:"LABEL", LEGEND:"LEGEND", LI:"LI", LINK:"LINK", MAP:"MAP", MENU:"MENU", META:"META", NOFRAMES:"NOFRAMES", NOSCRIPT:"NOSCRIPT", OBJECT:"OBJECT", OL:"OL", OPTGROUP:"OPTGROUP", OPTION:"OPTION", P:"P", PARAM:"PARAM", PRE:"PRE", Q:"Q", S:"S", SAMP:"SAMP", SCRIPT:"SCRIPT", SELECT:"SELECT", SMALL:"SMALL", SPAN:"SPAN", STRIKE:"STRIKE", 
+STRONG:"STRONG", STYLE:"STYLE", SUB:"SUB", SUP:"SUP", TABLE:"TABLE", TBODY:"TBODY", TD:"TD", TEXTAREA:"TEXTAREA", TFOOT:"TFOOT", TH:"TH", THEAD:"THEAD", TITLE:"TITLE", TR:"TR", TT:"TT", U:"U", UL:"UL", VAR:"VAR"};
 goog.provide("goog.dom.classes");
 goog.require("goog.array");
 goog.dom.classes.set = function(element, className) {
@@ -26414,13 +26465,6 @@ goog.dom.classes.toggle = function(element, className) {
   goog.dom.classes.enable(element, className, add);
   return add
 };
-goog.provide("goog.dom.BrowserFeature");
-goog.require("goog.userAgent");
-goog.dom.BrowserFeature = {CAN_ADD_NAME_OR_TYPE_ATTRIBUTES:!goog.userAgent.IE || goog.userAgent.isVersion("9"), CAN_USE_CHILDREN_ATTRIBUTE:!goog.userAgent.GECKO && !goog.userAgent.IE || goog.userAgent.IE && goog.userAgent.isVersion("9") || goog.userAgent.GECKO && goog.userAgent.isVersion("1.9.1"), CAN_USE_INNER_TEXT:goog.userAgent.IE && !goog.userAgent.isVersion("9"), INNER_HTML_NEEDS_SCOPED_ELEMENT:goog.userAgent.IE};
-goog.provide("goog.dom.TagName");
-goog.dom.TagName = {A:"A", ABBR:"ABBR", ACRONYM:"ACRONYM", ADDRESS:"ADDRESS", APPLET:"APPLET", AREA:"AREA", B:"B", BASE:"BASE", BASEFONT:"BASEFONT", BDO:"BDO", BIG:"BIG", BLOCKQUOTE:"BLOCKQUOTE", BODY:"BODY", BR:"BR", BUTTON:"BUTTON", CANVAS:"CANVAS", CAPTION:"CAPTION", CENTER:"CENTER", CITE:"CITE", CODE:"CODE", COL:"COL", COLGROUP:"COLGROUP", DD:"DD", DEL:"DEL", DFN:"DFN", DIR:"DIR", DIV:"DIV", DL:"DL", DT:"DT", EM:"EM", FIELDSET:"FIELDSET", FONT:"FONT", FORM:"FORM", FRAME:"FRAME", FRAMESET:"FRAMESET", 
-H1:"H1", H2:"H2", H3:"H3", H4:"H4", H5:"H5", H6:"H6", HEAD:"HEAD", HR:"HR", HTML:"HTML", I:"I", IFRAME:"IFRAME", IMG:"IMG", INPUT:"INPUT", INS:"INS", ISINDEX:"ISINDEX", KBD:"KBD", LABEL:"LABEL", LEGEND:"LEGEND", LI:"LI", LINK:"LINK", MAP:"MAP", MENU:"MENU", META:"META", NOFRAMES:"NOFRAMES", NOSCRIPT:"NOSCRIPT", OBJECT:"OBJECT", OL:"OL", OPTGROUP:"OPTGROUP", OPTION:"OPTION", P:"P", PARAM:"PARAM", PRE:"PRE", Q:"Q", S:"S", SAMP:"SAMP", SCRIPT:"SCRIPT", SELECT:"SELECT", SMALL:"SMALL", SPAN:"SPAN", STRIKE:"STRIKE", 
-STRONG:"STRONG", STYLE:"STYLE", SUB:"SUB", SUP:"SUP", TABLE:"TABLE", TBODY:"TBODY", TD:"TD", TEXTAREA:"TEXTAREA", TFOOT:"TFOOT", TH:"TH", THEAD:"THEAD", TITLE:"TITLE", TR:"TR", TT:"TT", U:"U", UL:"UL", VAR:"VAR"};
 goog.provide("goog.math.Coordinate");
 goog.math.Coordinate = function(opt_x, opt_y) {
   this.x = goog.isDef(opt_x) ? opt_x : 0;
@@ -27394,106 +27438,6 @@ goog.dom.DomHelper.prototype.getNodeTextLength = goog.dom.getNodeTextLength;
 goog.dom.DomHelper.prototype.getNodeTextOffset = goog.dom.getNodeTextOffset;
 goog.dom.DomHelper.prototype.getAncestorByTagNameAndClass = goog.dom.getAncestorByTagNameAndClass;
 goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
-goog.provide("goog.dom.xml");
-goog.require("goog.dom");
-goog.require("goog.dom.NodeType");
-goog.dom.xml.MAX_XML_SIZE_KB = 2 * 1024;
-goog.dom.xml.MAX_ELEMENT_DEPTH = 256;
-goog.dom.xml.createDocument = function(opt_rootTagName, opt_namespaceUri) {
-  if(opt_namespaceUri && !opt_rootTagName) {
-    throw Error("Can't create document with namespace and no root tag");
-  }
-  if(document.implementation && document.implementation.createDocument) {
-    return document.implementation.createDocument(opt_namespaceUri || "", opt_rootTagName || "", null)
-  }else {
-    if(typeof ActiveXObject != "undefined") {
-      var doc = goog.dom.xml.createMsXmlDocument_();
-      if(doc) {
-        if(opt_rootTagName) {
-          doc.appendChild(doc.createNode(goog.dom.NodeType.ELEMENT, opt_rootTagName, opt_namespaceUri || ""))
-        }
-        return doc
-      }
-    }
-  }
-  throw Error("Your browser does not support creating new documents");
-};
-goog.dom.xml.loadXml = function(xml) {
-  if(typeof DOMParser != "undefined") {
-    return(new DOMParser).parseFromString(xml, "application/xml")
-  }else {
-    if(typeof ActiveXObject != "undefined") {
-      var doc = goog.dom.xml.createMsXmlDocument_();
-      doc.loadXML(xml);
-      return doc
-    }
-  }
-  throw Error("Your browser does not support loading xml documents");
-};
-goog.dom.xml.serialize = function(xml) {
-  if(typeof XMLSerializer != "undefined") {
-    return(new XMLSerializer).serializeToString(xml)
-  }
-  var text = xml.xml;
-  if(text) {
-    return text
-  }
-  throw Error("Your browser does not support serializing XML documents");
-};
-goog.dom.xml.selectSingleNode = function(node, path) {
-  if(typeof node.selectSingleNode != "undefined") {
-    var doc = goog.dom.getOwnerDocument(node);
-    if(typeof doc.setProperty != "undefined") {
-      doc.setProperty("SelectionLanguage", "XPath")
-    }
-    return node.selectSingleNode(path)
-  }else {
-    if(document.implementation.hasFeature("XPath", "3.0")) {
-      var doc = goog.dom.getOwnerDocument(node);
-      var resolver = doc.createNSResolver(doc.documentElement);
-      var result = doc.evaluate(path, node, resolver, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-      return result.singleNodeValue
-    }
-  }
-  return null
-};
-goog.dom.xml.selectNodes = function(node, path) {
-  if(typeof node.selectNodes != "undefined") {
-    var doc = goog.dom.getOwnerDocument(node);
-    if(typeof doc.setProperty != "undefined") {
-      doc.setProperty("SelectionLanguage", "XPath")
-    }
-    return node.selectNodes(path)
-  }else {
-    if(document.implementation.hasFeature("XPath", "3.0")) {
-      var doc = goog.dom.getOwnerDocument(node);
-      var resolver = doc.createNSResolver(doc.documentElement);
-      var nodes = doc.evaluate(path, node, resolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-      var results = [];
-      var count = nodes.snapshotLength;
-      for(var i = 0;i < count;i++) {
-        results.push(nodes.snapshotItem(i))
-      }
-      return results
-    }else {
-      return[]
-    }
-  }
-};
-goog.dom.xml.createMsXmlDocument_ = function() {
-  var doc = new ActiveXObject("MSXML2.DOMDocument");
-  if(doc) {
-    doc.resolveExternals = false;
-    doc.validateOnParse = false;
-    try {
-      doc.setProperty("ProhibitDTD", true);
-      doc.setProperty("MaxXMLSize", goog.dom.xml.MAX_XML_SIZE_KB);
-      doc.setProperty("MaxElementDepth", goog.dom.xml.MAX_ELEMENT_DEPTH)
-    }catch(e) {
-    }
-  }
-  return doc
-};
 goog.provide("goog.math.Box");
 goog.require("goog.math.Coordinate");
 goog.math.Box = function(top, right, bottom, left) {
@@ -28431,6 +28375,260 @@ goog.style.getScrollbarWidth = function() {
   goog.dom.removeNode(mockElement);
   return width
 };
+goog.provide("clojure.browser.event");
+goog.require("cljs.core");
+goog.require("goog.events.EventType");
+goog.require("goog.events.EventTarget");
+goog.require("goog.events");
+clojure.browser.event.EventType = {};
+clojure.browser.event.event_types = function event_types(this$) {
+  if(function() {
+    var and__3822__auto____12542 = this$;
+    if(and__3822__auto____12542) {
+      return this$.clojure$browser$event$EventType$event_types$arity$1
+    }else {
+      return and__3822__auto____12542
+    }
+  }()) {
+    return this$.clojure$browser$event$EventType$event_types$arity$1(this$)
+  }else {
+    var x__2389__auto____12543 = this$ == null ? null : this$;
+    return function() {
+      var or__3824__auto____12544 = clojure.browser.event.event_types[goog.typeOf(x__2389__auto____12543)];
+      if(or__3824__auto____12544) {
+        return or__3824__auto____12544
+      }else {
+        var or__3824__auto____12545 = clojure.browser.event.event_types["_"];
+        if(or__3824__auto____12545) {
+          return or__3824__auto____12545
+        }else {
+          throw cljs.core.missing_protocol.call(null, "EventType.event-types", this$);
+        }
+      }
+    }().call(null, this$)
+  }
+};
+Element.prototype.clojure$browser$event$EventType$ = true;
+Element.prototype.clojure$browser$event$EventType$event_types$arity$1 = function(this$) {
+  return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.map.call(null, function(p__12546) {
+    var vec__12547__12548 = p__12546;
+    var k__12549 = cljs.core.nth.call(null, vec__12547__12548, 0, null);
+    var v__12550 = cljs.core.nth.call(null, vec__12547__12548, 1, null);
+    return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, k__12549.toLowerCase()), v__12550], true)
+  }, cljs.core.merge.call(null, cljs.core.js__GT_clj.call(null, goog.events.EventType))))
+};
+goog.events.EventTarget.prototype.clojure$browser$event$EventType$ = true;
+goog.events.EventTarget.prototype.clojure$browser$event$EventType$event_types$arity$1 = function(this$) {
+  return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.map.call(null, function(p__12551) {
+    var vec__12552__12553 = p__12551;
+    var k__12554 = cljs.core.nth.call(null, vec__12552__12553, 0, null);
+    var v__12555 = cljs.core.nth.call(null, vec__12552__12553, 1, null);
+    return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, k__12554.toLowerCase()), v__12555], true)
+  }, cljs.core.merge.call(null, cljs.core.js__GT_clj.call(null, goog.events.EventType))))
+};
+clojure.browser.event.listen = function() {
+  var listen = null;
+  var listen__3 = function(src, type, fn) {
+    return listen.call(null, src, type, fn, false)
+  };
+  var listen__4 = function(src, type, fn, capture_QMARK_) {
+    return goog.events.listen(src, cljs.core._lookup.call(null, clojure.browser.event.event_types.call(null, src), type, type), fn, capture_QMARK_)
+  };
+  listen = function(src, type, fn, capture_QMARK_) {
+    switch(arguments.length) {
+      case 3:
+        return listen__3.call(this, src, type, fn);
+      case 4:
+        return listen__4.call(this, src, type, fn, capture_QMARK_)
+    }
+    throw"Invalid arity: " + arguments.length;
+  };
+  listen.cljs$lang$arity$3 = listen__3;
+  listen.cljs$lang$arity$4 = listen__4;
+  return listen
+}();
+clojure.browser.event.listen_once = function() {
+  var listen_once = null;
+  var listen_once__3 = function(src, type, fn) {
+    return listen_once.call(null, src, type, fn, false)
+  };
+  var listen_once__4 = function(src, type, fn, capture_QMARK_) {
+    return goog.events.listenOnce(src, cljs.core._lookup.call(null, clojure.browser.event.event_types.call(null, src), type, type), fn, capture_QMARK_)
+  };
+  listen_once = function(src, type, fn, capture_QMARK_) {
+    switch(arguments.length) {
+      case 3:
+        return listen_once__3.call(this, src, type, fn);
+      case 4:
+        return listen_once__4.call(this, src, type, fn, capture_QMARK_)
+    }
+    throw"Invalid arity: " + arguments.length;
+  };
+  listen_once.cljs$lang$arity$3 = listen_once__3;
+  listen_once.cljs$lang$arity$4 = listen_once__4;
+  return listen_once
+}();
+clojure.browser.event.unlisten = function() {
+  var unlisten = null;
+  var unlisten__3 = function(src, type, fn) {
+    return unlisten.call(null, src, type, fn, false)
+  };
+  var unlisten__4 = function(src, type, fn, capture_QMARK_) {
+    return goog.events.unlisten(src, cljs.core._lookup.call(null, clojure.browser.event.event_types.call(null, src), type, type), fn, capture_QMARK_)
+  };
+  unlisten = function(src, type, fn, capture_QMARK_) {
+    switch(arguments.length) {
+      case 3:
+        return unlisten__3.call(this, src, type, fn);
+      case 4:
+        return unlisten__4.call(this, src, type, fn, capture_QMARK_)
+    }
+    throw"Invalid arity: " + arguments.length;
+  };
+  unlisten.cljs$lang$arity$3 = unlisten__3;
+  unlisten.cljs$lang$arity$4 = unlisten__4;
+  return unlisten
+}();
+clojure.browser.event.unlisten_by_key = function unlisten_by_key(key) {
+  return goog.events.unlistenByKey(key)
+};
+clojure.browser.event.dispatch_event = function dispatch_event(src, event) {
+  return goog.events.dispatchEvent(src, event)
+};
+clojure.browser.event.expose = function expose(e) {
+  return goog.events.expose(e)
+};
+clojure.browser.event.fire_listeners = function fire_listeners(obj, type, capture, event) {
+  return null
+};
+clojure.browser.event.total_listener_count = function total_listener_count() {
+  return goog.events.getTotalListenerCount()
+};
+clojure.browser.event.get_listener = function get_listener(src, type, listener, opt_capt, opt_handler) {
+  return null
+};
+clojure.browser.event.all_listeners = function all_listeners(obj, type, capture) {
+  return null
+};
+clojure.browser.event.unique_event_id = function unique_event_id(event_type) {
+  return null
+};
+clojure.browser.event.has_listener = function has_listener(obj, opt_type, opt_capture) {
+  return null
+};
+clojure.browser.event.remove_all = function remove_all(opt_obj, opt_type, opt_capt) {
+  return null
+};
+goog.provide("domina.support");
+goog.require("cljs.core");
+goog.require("goog.events");
+goog.require("goog.dom");
+var div__12495 = document.createElement("div");
+var test_html__12496 = "   <link/><table></table><a href='/a' style='top:1px;float:left;opacity:.55;'>a</a><input type='checkbox'/>";
+div__12495.innerHTML = test_html__12496;
+domina.support.leading_whitespace_QMARK_ = cljs.core._EQ_.call(null, div__12495.firstChild.nodeType, 3);
+domina.support.extraneous_tbody_QMARK_ = cljs.core._EQ_.call(null, div__12495.getElementsByTagName("tbody").length, 0);
+domina.support.unscoped_html_elements_QMARK_ = cljs.core._EQ_.call(null, div__12495.getElementsByTagName("link").length, 0);
+goog.provide("goog.dom.xml");
+goog.require("goog.dom");
+goog.require("goog.dom.NodeType");
+goog.dom.xml.MAX_XML_SIZE_KB = 2 * 1024;
+goog.dom.xml.MAX_ELEMENT_DEPTH = 256;
+goog.dom.xml.createDocument = function(opt_rootTagName, opt_namespaceUri) {
+  if(opt_namespaceUri && !opt_rootTagName) {
+    throw Error("Can't create document with namespace and no root tag");
+  }
+  if(document.implementation && document.implementation.createDocument) {
+    return document.implementation.createDocument(opt_namespaceUri || "", opt_rootTagName || "", null)
+  }else {
+    if(typeof ActiveXObject != "undefined") {
+      var doc = goog.dom.xml.createMsXmlDocument_();
+      if(doc) {
+        if(opt_rootTagName) {
+          doc.appendChild(doc.createNode(goog.dom.NodeType.ELEMENT, opt_rootTagName, opt_namespaceUri || ""))
+        }
+        return doc
+      }
+    }
+  }
+  throw Error("Your browser does not support creating new documents");
+};
+goog.dom.xml.loadXml = function(xml) {
+  if(typeof DOMParser != "undefined") {
+    return(new DOMParser).parseFromString(xml, "application/xml")
+  }else {
+    if(typeof ActiveXObject != "undefined") {
+      var doc = goog.dom.xml.createMsXmlDocument_();
+      doc.loadXML(xml);
+      return doc
+    }
+  }
+  throw Error("Your browser does not support loading xml documents");
+};
+goog.dom.xml.serialize = function(xml) {
+  if(typeof XMLSerializer != "undefined") {
+    return(new XMLSerializer).serializeToString(xml)
+  }
+  var text = xml.xml;
+  if(text) {
+    return text
+  }
+  throw Error("Your browser does not support serializing XML documents");
+};
+goog.dom.xml.selectSingleNode = function(node, path) {
+  if(typeof node.selectSingleNode != "undefined") {
+    var doc = goog.dom.getOwnerDocument(node);
+    if(typeof doc.setProperty != "undefined") {
+      doc.setProperty("SelectionLanguage", "XPath")
+    }
+    return node.selectSingleNode(path)
+  }else {
+    if(document.implementation.hasFeature("XPath", "3.0")) {
+      var doc = goog.dom.getOwnerDocument(node);
+      var resolver = doc.createNSResolver(doc.documentElement);
+      var result = doc.evaluate(path, node, resolver, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+      return result.singleNodeValue
+    }
+  }
+  return null
+};
+goog.dom.xml.selectNodes = function(node, path) {
+  if(typeof node.selectNodes != "undefined") {
+    var doc = goog.dom.getOwnerDocument(node);
+    if(typeof doc.setProperty != "undefined") {
+      doc.setProperty("SelectionLanguage", "XPath")
+    }
+    return node.selectNodes(path)
+  }else {
+    if(document.implementation.hasFeature("XPath", "3.0")) {
+      var doc = goog.dom.getOwnerDocument(node);
+      var resolver = doc.createNSResolver(doc.documentElement);
+      var nodes = doc.evaluate(path, node, resolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+      var results = [];
+      var count = nodes.snapshotLength;
+      for(var i = 0;i < count;i++) {
+        results.push(nodes.snapshotItem(i))
+      }
+      return results
+    }else {
+      return[]
+    }
+  }
+};
+goog.dom.xml.createMsXmlDocument_ = function() {
+  var doc = new ActiveXObject("MSXML2.DOMDocument");
+  if(doc) {
+    doc.resolveExternals = false;
+    doc.validateOnParse = false;
+    try {
+      doc.setProperty("ProhibitDTD", true);
+      doc.setProperty("MaxXMLSize", goog.dom.xml.MAX_XML_SIZE_KB);
+      doc.setProperty("MaxElementDepth", goog.dom.xml.MAX_ELEMENT_DEPTH)
+    }catch(e) {
+    }
+  }
+  return doc
+};
 goog.provide("goog.dom.forms");
 goog.require("goog.structs.Map");
 goog.dom.forms.getFormDataMap = function(form) {
@@ -28630,16 +28828,6 @@ goog.dom.forms.setSelectMultiple_ = function(el, opt_value) {
     }
   }
 };
-goog.provide("domina.support");
-goog.require("cljs.core");
-goog.require("goog.events");
-goog.require("goog.dom");
-var div__12495 = document.createElement("div");
-var test_html__12496 = "   <link/><table></table><a href='/a' style='top:1px;float:left;opacity:.55;'>a</a><input type='checkbox'/>";
-div__12495.innerHTML = test_html__12496;
-domina.support.leading_whitespace_QMARK_ = cljs.core._EQ_.call(null, div__12495.firstChild.nodeType, 3);
-domina.support.extraneous_tbody_QMARK_ = cljs.core._EQ_.call(null, div__12495.getElementsByTagName("tbody").length, 0);
-domina.support.unscoped_html_elements_QMARK_ = cljs.core._EQ_.call(null, div__12495.getElementsByTagName("link").length, 0);
 goog.provide("domina");
 goog.require("cljs.core");
 goog.require("domina.support");
@@ -29763,190 +29951,7 @@ if(cljs.core.truth_(typeof HTMLCollection != "undefined")) {
   }
 }else {
 }
-;goog.provide("cljs_intro.pubsub");
-goog.require("cljs.core");
-goog.require("shoreleave.pubsubs.protocols");
-goog.require("shoreleave.pubsubs.simple");
-goog.require("domina");
-cljs_intro.pubsub.bus = shoreleave.pubsubs.simple.bus.call(null);
-cljs_intro.pubsub.search_topic = shoreleave.pubsubs.protocols.topicify.call(null, "\ufdd0'search");
-cljs_intro.pubsub.results_topic = shoreleave.pubsubs.protocols.topicify.call(null, "\ufdd0'results");
-cljs_intro.pubsub.history_topic = shoreleave.pubsubs.protocols.topicify.call(null, "\ufdd0'history");
-cljs_intro.pubsub.search_state = cljs.core.atom.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'lastname", "\ufdd0'previous-searches"], {"\ufdd0'lastname":"", "\ufdd0'previous-searches":cljs.core.List.EMPTY}));
-cljs_intro.pubsub.publish_results = function publish_results(res) {
-  return shoreleave.pubsubs.protocols.publish.call(null, cljs_intro.pubsub.bus, cljs_intro.pubsub.results_topic, res)
-};
-cljs_intro.pubsub.add_previous_search = function add_previous_search(prev_lname) {
-  if(cljs.core.not_EQ_.call(null, prev_lname, "")) {
-    return cljs.core.conj.call(null, (new cljs.core.Keyword("\ufdd0'previous-searches")).call(null, cljs.core.deref.call(null, cljs_intro.pubsub.search_state)), prev_lname)
-  }else {
-    return null
-  }
-};
-cljs_intro.pubsub.publish_search_string = function publish_search_string(lname) {
-  var prev_lname__526396 = (new cljs.core.Keyword("\ufdd0'lastname")).call(null, cljs.core.deref.call(null, cljs_intro.pubsub.search_state));
-  cljs.core.swap_BANG_.call(null, cljs_intro.pubsub.search_state, cljs.core.merge, cljs.core.ObjMap.fromObject(["\ufdd0'lastname", "\ufdd0'previous-searches"], {"\ufdd0'lastname":lname, "\ufdd0'previous-searches":cljs_intro.pubsub.add_previous_search.call(null, prev_lname__526396)}));
-  return shoreleave.pubsubs.protocols.publish.call(null, cljs_intro.pubsub.bus, cljs_intro.pubsub.search_topic, lname)
-};
-cljs_intro.pubsub.publish_view_history = function publish_view_history(current_lname) {
-  return shoreleave.pubsubs.protocols.publish.call(null, cljs_intro.pubsub.bus, cljs_intro.pubsub.history_topic, current_lname)
-};
-cljs_intro.pubsub.subscribe_to = function subscribe_to(topic, f) {
-  return shoreleave.pubsubs.protocols.subscribe.call(null, cljs_intro.pubsub.bus, topic, f)
-};
-cljs_intro.pubsub.console_logger = function console_logger(data) {
-  return console.log(cljs.core.pr_str.call(null, data))
-};
-shoreleave.pubsubs.protocols.publishize.call(null, cljs_intro.pubsub.search_state, cljs_intro.pubsub.bus);
-cljs_intro.pubsub.subscribe_to.call(null, cljs_intro.pubsub.search_topic, function(data) {
-  return[cljs.core.str(cljs_intro.pubsub.console_logger.call(null, [cljs.core.str("Searched for "), cljs.core.str(data)].join("")))].join("")
-});
-cljs_intro.pubsub.subscribe_to.call(null, cljs_intro.pubsub.search_state, cljs_intro.pubsub.console_logger);
-goog.provide("clojure.browser.event");
-goog.require("cljs.core");
-goog.require("goog.events.EventType");
-goog.require("goog.events.EventTarget");
-goog.require("goog.events");
-clojure.browser.event.EventType = {};
-clojure.browser.event.event_types = function event_types(this$) {
-  if(function() {
-    var and__3822__auto____12542 = this$;
-    if(and__3822__auto____12542) {
-      return this$.clojure$browser$event$EventType$event_types$arity$1
-    }else {
-      return and__3822__auto____12542
-    }
-  }()) {
-    return this$.clojure$browser$event$EventType$event_types$arity$1(this$)
-  }else {
-    var x__2389__auto____12543 = this$ == null ? null : this$;
-    return function() {
-      var or__3824__auto____12544 = clojure.browser.event.event_types[goog.typeOf(x__2389__auto____12543)];
-      if(or__3824__auto____12544) {
-        return or__3824__auto____12544
-      }else {
-        var or__3824__auto____12545 = clojure.browser.event.event_types["_"];
-        if(or__3824__auto____12545) {
-          return or__3824__auto____12545
-        }else {
-          throw cljs.core.missing_protocol.call(null, "EventType.event-types", this$);
-        }
-      }
-    }().call(null, this$)
-  }
-};
-Element.prototype.clojure$browser$event$EventType$ = true;
-Element.prototype.clojure$browser$event$EventType$event_types$arity$1 = function(this$) {
-  return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.map.call(null, function(p__12546) {
-    var vec__12547__12548 = p__12546;
-    var k__12549 = cljs.core.nth.call(null, vec__12547__12548, 0, null);
-    var v__12550 = cljs.core.nth.call(null, vec__12547__12548, 1, null);
-    return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, k__12549.toLowerCase()), v__12550], true)
-  }, cljs.core.merge.call(null, cljs.core.js__GT_clj.call(null, goog.events.EventType))))
-};
-goog.events.EventTarget.prototype.clojure$browser$event$EventType$ = true;
-goog.events.EventTarget.prototype.clojure$browser$event$EventType$event_types$arity$1 = function(this$) {
-  return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.map.call(null, function(p__12551) {
-    var vec__12552__12553 = p__12551;
-    var k__12554 = cljs.core.nth.call(null, vec__12552__12553, 0, null);
-    var v__12555 = cljs.core.nth.call(null, vec__12552__12553, 1, null);
-    return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, k__12554.toLowerCase()), v__12555], true)
-  }, cljs.core.merge.call(null, cljs.core.js__GT_clj.call(null, goog.events.EventType))))
-};
-clojure.browser.event.listen = function() {
-  var listen = null;
-  var listen__3 = function(src, type, fn) {
-    return listen.call(null, src, type, fn, false)
-  };
-  var listen__4 = function(src, type, fn, capture_QMARK_) {
-    return goog.events.listen(src, cljs.core._lookup.call(null, clojure.browser.event.event_types.call(null, src), type, type), fn, capture_QMARK_)
-  };
-  listen = function(src, type, fn, capture_QMARK_) {
-    switch(arguments.length) {
-      case 3:
-        return listen__3.call(this, src, type, fn);
-      case 4:
-        return listen__4.call(this, src, type, fn, capture_QMARK_)
-    }
-    throw"Invalid arity: " + arguments.length;
-  };
-  listen.cljs$lang$arity$3 = listen__3;
-  listen.cljs$lang$arity$4 = listen__4;
-  return listen
-}();
-clojure.browser.event.listen_once = function() {
-  var listen_once = null;
-  var listen_once__3 = function(src, type, fn) {
-    return listen_once.call(null, src, type, fn, false)
-  };
-  var listen_once__4 = function(src, type, fn, capture_QMARK_) {
-    return goog.events.listenOnce(src, cljs.core._lookup.call(null, clojure.browser.event.event_types.call(null, src), type, type), fn, capture_QMARK_)
-  };
-  listen_once = function(src, type, fn, capture_QMARK_) {
-    switch(arguments.length) {
-      case 3:
-        return listen_once__3.call(this, src, type, fn);
-      case 4:
-        return listen_once__4.call(this, src, type, fn, capture_QMARK_)
-    }
-    throw"Invalid arity: " + arguments.length;
-  };
-  listen_once.cljs$lang$arity$3 = listen_once__3;
-  listen_once.cljs$lang$arity$4 = listen_once__4;
-  return listen_once
-}();
-clojure.browser.event.unlisten = function() {
-  var unlisten = null;
-  var unlisten__3 = function(src, type, fn) {
-    return unlisten.call(null, src, type, fn, false)
-  };
-  var unlisten__4 = function(src, type, fn, capture_QMARK_) {
-    return goog.events.unlisten(src, cljs.core._lookup.call(null, clojure.browser.event.event_types.call(null, src), type, type), fn, capture_QMARK_)
-  };
-  unlisten = function(src, type, fn, capture_QMARK_) {
-    switch(arguments.length) {
-      case 3:
-        return unlisten__3.call(this, src, type, fn);
-      case 4:
-        return unlisten__4.call(this, src, type, fn, capture_QMARK_)
-    }
-    throw"Invalid arity: " + arguments.length;
-  };
-  unlisten.cljs$lang$arity$3 = unlisten__3;
-  unlisten.cljs$lang$arity$4 = unlisten__4;
-  return unlisten
-}();
-clojure.browser.event.unlisten_by_key = function unlisten_by_key(key) {
-  return goog.events.unlistenByKey(key)
-};
-clojure.browser.event.dispatch_event = function dispatch_event(src, event) {
-  return goog.events.dispatchEvent(src, event)
-};
-clojure.browser.event.expose = function expose(e) {
-  return goog.events.expose(e)
-};
-clojure.browser.event.fire_listeners = function fire_listeners(obj, type, capture, event) {
-  return null
-};
-clojure.browser.event.total_listener_count = function total_listener_count() {
-  return goog.events.getTotalListenerCount()
-};
-clojure.browser.event.get_listener = function get_listener(src, type, listener, opt_capt, opt_handler) {
-  return null
-};
-clojure.browser.event.all_listeners = function all_listeners(obj, type, capture) {
-  return null
-};
-clojure.browser.event.unique_event_id = function unique_event_id(event_type) {
-  return null
-};
-clojure.browser.event.has_listener = function has_listener(obj, opt_type, opt_capture) {
-  return null
-};
-clojure.browser.event.remove_all = function remove_all(opt_obj, opt_type, opt_capt) {
-  return null
-};
-goog.provide("domina.xpath");
+;goog.provide("domina.xpath");
 goog.require("cljs.core");
 goog.require("goog.dom");
 goog.require("domina");
@@ -30074,9 +30079,9 @@ cljs_intro.search.lastname_field = domina.by_id.call(null, "lname");
 cljs_intro.search.history_button = domina.by_id.call(null, "history-btn");
 domina.set_styles_BANG_.call(null, cljs_intro.search.history_button, cljs.core.ObjMap.fromObject(["\ufdd0'display"], {"\ufdd0'display":"none"}));
 cljs_intro.search.update_results_div = function update_results_div(data) {
-  var res_div__534375 = domina.xpath.xpath.call(null, "//div[@id='results']");
-  domina.destroy_children_BANG_.call(null, res_div__534375);
-  return domina.append_BANG_.call(null, res_div__534375, data)
+  var res_div__45882 = domina.xpath.xpath.call(null, "//div[@id='results']");
+  domina.destroy_children_BANG_.call(null, res_div__45882);
+  return domina.append_BANG_.call(null, res_div__45882, data)
 };
 cljs_intro.search.display_results = function display_results(data) {
   return cljs_intro.search.update_results_div.call(null, cljs_intro.views.show_stats.call(null, data))
@@ -30086,11 +30091,11 @@ cljs_intro.search.player_lookup = function player_lookup(lastname) {
     return cljs_intro.pubsub.publish_results.call(null, cljs.core.js__GT_clj.call(null, data.target.getResponseJson(), "\ufdd0'keywordize-keys", true))
   })
 };
-cljs_intro.search.search_state_change = function search_state_change(p__534376) {
-  var map__534381__534382 = p__534376;
-  var map__534381__534383 = cljs.core.seq_QMARK_.call(null, map__534381__534382) ? cljs.core.apply.call(null, cljs.core.hash_map, map__534381__534382) : map__534381__534382;
-  var new__534384 = cljs.core._lookup.call(null, map__534381__534383, "\ufdd0'new", null);
-  if(cljs.core.count.call(null, (new cljs.core.Keyword("\ufdd0'previous-searches")).call(null, new__534384)) > 0) {
+cljs_intro.search.search_state_change = function search_state_change(p__45883) {
+  var map__45888__45889 = p__45883;
+  var map__45888__45890 = cljs.core.seq_QMARK_.call(null, map__45888__45889) ? cljs.core.apply.call(null, cljs.core.hash_map, map__45888__45889) : map__45888__45889;
+  var new__45891 = cljs.core._lookup.call(null, map__45888__45890, "\ufdd0'new", null);
+  if(cljs.core.count.call(null, (new cljs.core.Keyword("\ufdd0'previous-searches")).call(null, new__45891)) > 0) {
     return domina.set_styles_BANG_.call(null, cljs_intro.search.history_button, cljs.core.ObjMap.fromObject(["\ufdd0'display"], {"\ufdd0'display":""}))
   }else {
     return null
@@ -30109,9 +30114,3 @@ clojure.browser.event.listen.call(null, cljs_intro.search.search_button, "click"
 clojure.browser.event.listen.call(null, cljs_intro.search.history_button, "click", function() {
   return cljs_intro.pubsub.publish_view_history.call(null, domina.value.call(null, cljs_intro.search.lastname_field))
 });
-goog.provide("cljs_intro.hello");
-goog.require("cljs.core");
-cljs_intro.hello.greeting = function greeting() {
-  return document.write("<p>Hello Hockey Fans!</p>")
-};
-goog.exportSymbol("cljs_intro.hello.greeting", cljs_intro.hello.greeting);
