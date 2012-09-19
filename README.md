@@ -14,6 +14,7 @@ An introduction to ClojureScript.  Follow me as I learn how to build an app usin
 
 ## Part 3
 
+<<<<<<< HEAD
 Coming soon
 
 ## License
@@ -21,3 +22,19 @@ Coming soon
 Copyright (C) 2012 FIXME
 
 Distributed under the Eclipse Public License, the same as Clojure.
+=======
+- Article: [Using Shoreleave-pubsub](http://www.myclojureadventure.com/2012/09/intro-to-clojurescript-part-3-using.html)
+- Code: [`part-3` branch](https://github.com/rippinrobr/cljs-intro/tree/part-3)
+
+
+## Part 4
+
+- Article: Using Shoreleave-remote - Coming Soon
+- Code: Not Available
+
+## License
+
+Copyright (C) 2012 Rob Rowe
+
+Distributed under the Eclipse Public License, the same as Clojure.
+>>>>>>> Updated to include the improved readme.
