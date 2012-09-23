@@ -1,6 +1,6 @@
 # cljs-intro
 
-An introduction to ClojureScript.  Follow me as I learn how to build an app using ClojureScript.
+An introduction to ClojureScript.  Follow me as I learn how to build an app using ClojureScript. The project.clj file is set up for Leiningen 1.7.1 (That is the version I'm using in this series). The lein-2-project.clj file is setup for Leiningen 2 (submitted by [Michael Peterson](https://github.com/midpeter444))
 
 ## Part 1
 
