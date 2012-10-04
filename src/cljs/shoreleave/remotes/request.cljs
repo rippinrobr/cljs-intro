@@ -15,9 +15,9 @@
 
 (def ^:private responders (atom {}))
 
-(defn- add-responders [id success error]
+(defn- add-responders [id success error use-json]
   (when (or success error)
-    (swap! responders assoc id {:success success :error error})))
+    (swap! responders assoc id {:success success :error error :use-json use-json})))
 
 (extend-type goog.net.XhrManager
 
@@ -54,11 +54,11 @@
   `:priority`, and `:retries`. `:id` defaults to a random string,
   `:retries` defaults to `0`."
   [route & {:keys [id content headers priority retries on-success
-                    on-error]
-             :or   {id (common/rand-id-str), retries 0}}]
+                    on-error use-json]
+             :or   {id (common/rand-id-str), retries 0, use-json false}}]
   (let [[method uri] (common/parse-route route)]
     (try
-      (add-responders id on-success on-error)
+      (add-responders id on-success on-error use-json)
       (.send *xhr-manager*
              id
              uri
@@ -75,7 +75,7 @@
         nil))))
 
 (defn- response-success [e]
-  (when-let [{success :success} (get @responders (:id e))]
+  (when-let [{success :success, use-json :use-json} (get @responders (:id e))]
     (success e)
     (swap! responders dissoc (:id e))))
 
@@ -87,7 +87,7 @@
 (defn- response-received
   [f e]
   (f {:id     (.-id e)
-      :body   (.getResponseJson e/xhrIo)
+      :body   (if (:use-json (get @responders (.-id e))) (.getResponseJson e/xhrIo) (.getResponse e/xhrIo))
       :status (.getStatus e/xhrIo)
       :event  e}))
 

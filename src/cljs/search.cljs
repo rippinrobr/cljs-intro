@@ -27,22 +27,14 @@
 	display-results [data]
  (update-results-div (v/show-stats data)))
 
-; makes the remote call to the player lookup web service 
-(defn ^{:doc "calls the player web service using goog.net.XhrIo to make the call." }
-  player-lookup [lastname]
-  (js/alert "in player-lookup")
-  (.send goog.net.XhrIo (str "/player/" lastname)
-	   (fn [data] 
-		   (ps/publish-results 
-					(js->clj (.getResponseJson (.-target data)) :keywordize-keys true))))) 
-
-(defn sl-display-results [{:keys [body]}]
+(defn sl-display-results [{:keys [body event]}]
 	(update-results-div (v/show-stats (js->clj body :keywordize-keys true))))
 
 (defn find-player [lastname]
 	(sl-req/request (str "/player/" lastname)
 			:on-success sl-display-results
-			:on-error #(js/alert "an error!")))
+			:on-error #(js/alert "an error!")
+			:use-json true))
 
 (defn search-state-change [{:keys [new]}]
 	(if (> (count (:previous-searches new)) 0)
