@@ -2,8 +2,9 @@
 	(:require 
 			[domina :as d]
 			[domina.xpath :as dx]
-		 [clojure.browser.event :as event]
+		  [clojure.browser.event :as event]
 			[goog.net.XhrIo :as jsonp]
+			[shoreleave.remotes.request :as sl-req]
 			[cljs-intro.views :as v]
 			[cljs-intro.pubsub :as ps]))
 			
@@ -29,10 +30,19 @@
 ; makes the remote call to the player lookup web service 
 (defn ^{:doc "calls the player web service using goog.net.XhrIo to make the call." }
   player-lookup [lastname]
+  (js/alert "in player-lookup")
   (.send goog.net.XhrIo (str "/player/" lastname)
 	   (fn [data] 
 		   (ps/publish-results 
 					(js->clj (.getResponseJson (.-target data)) :keywordize-keys true))))) 
+
+(defn sl-display-results [{:keys [body]}]
+	(update-results-div (v/show-stats (js->clj body :keywordize-keys true))))
+
+(defn find-player [lastname]
+	(sl-req/request (str "/player/" lastname)
+			:on-success sl-display-results
+			:on-error #(js/alert "an error!")))
 
 (defn search-state-change [{:keys [new]}]
 	(if (> (count (:previous-searches new)) 0)
@@ -42,10 +52,10 @@
 	(update-results-div (v/show-history (conj (:previous-searches @ps/search-state) current-lname))))
 
 ; Subscriptions
-(ps/subscribe-to ps/search-topic player-lookup)
-(ps/subscribe-to ps/results-topic display-results)
+(ps/subscribe-to :search find-player)
+(ps/subscribe-to :results display-results)
 (ps/subscribe-to ps/search-state search-state-change)
-(ps/subscribe-to ps/history-topic view-history)
+(ps/subscribe-to :history view-history)
 
 ; Event handlers
 (event/listen search-button "click"

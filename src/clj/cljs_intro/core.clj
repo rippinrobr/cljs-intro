@@ -2,7 +2,12 @@
 	(:use noir.core)
 	(:require [noir.server :as server]
 					  [noir.response :as response]
-						[cljs-intro.db :as db]))
+					  [cljs-intro.db :as db]
+						[noir.shoreleave.rpc :as rpc]))
+
+; Remote Namespaces
+(rpc/activate-remotes!)
+(rpc/remote-ns 'cljs-intro.db :as "api")
 
 ; responds to HTTP GET calls for the URL
 ; Passes the player's last name to the DB 

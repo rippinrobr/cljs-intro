@@ -1,12 +1,15 @@
 (ns cljs-intro.db
 	(:require [clojure.java.jdbc :as sql]))
 	
-(def dbconn 
+(def ^{:private true} 
+	dbconn 
 	{:classname   "org.sqlite.JDBC"
    	 :subprotocol "sqlite"
    	 :subname     "db/hockeydb.sqlite3" })
 
-(defn run-sql [sql-vector]
+(defn 
+	^{:private true} 
+	run-sql [sql-vector]
 	(sql/with-connection dbconn
         (sql/with-query-results rows
           sql-vector 

@@ -152,7 +152,9 @@
 	[:div.demog
 	 [:div.page-header.tabs.clearfix.nm
 	  [:h2 (str firstname " " lastname)
-	  [:span.pos (str "(" pos ")") ]]]])
+	  [:span.pos (str "(" pos ")") ]
+	  [:span.view-demog [:button.view-demog-btn {:value lastname :id "demog-btn"} "View Demographics"]]]
+	 [:div.demog-data]]])
 
 (hiccups/defhtml show-stats [data]
   (let [demog (:demog data)]
